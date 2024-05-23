@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/header-footer.css">
+    <link rel="stylesheet" href="./css/update.css">
+    <link rel="stylesheet" href="./css/quanlytaikhoan.css">
+    <style>
+        .box-checked{
+            width: 230px;
+            margin: 20px 35px;
+        }
+        .checked-tamtru{
+            display: flex;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .checked-tamtru input{
+            width:30px;
+            height: 30px;
+        }
+        .checked-tamtru label{
+            place-content: center;
+            padding-left: 20px;
+        }
+
+        .sumit_tamtru:hover{
+            background-color: #80f780;
+        }
+
+        .item button{
+            height: 30px;
+            margin: 10px;
+            width: 240px;
+            border-radius: 5px;
+            background-color: #ffb4b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header grid">
+        <div class="container gridhead wide">
+            <div class="item">
+                <div class="logo">
+                    <a href=""><img src="./image/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">TRANG CHỦ</a>
+            </div>
+            <div class="item">
+                <a href="">GIỚI THIỆU</a>
+            </div>
+            <div class="item">
+                <a href="">THỦ TỤC</a>
+            </div>
+            <div class="item">
+                <a href="">QUY ĐỊNH</a>
+            </div>
+            <div class="item">
+                <a href="">HỖ TRỢ</a>
+            </div>
+            <div class="item">
+                <a href="">THÔNG TIN</a>
+            </div>
+            <div class="item">
+                <a href="">TIN TỨC</a>
+            </div>
+            <div class="item">
+                <a href="">LIÊN HỆ</a>
+            </div>
+            <div class="item seach">
+               <input type="text">
+            </div>
+            <div class="item user">
+                <a href="">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="nav">
+        <div class="menu">
+            <div class="item">Tổng quan</div>
+            <div class="item">Quản lý tài khoản</div>
+            <div class="item">Xử lý yêu cầu</div>
+            <div class="item"> văn bản hướng dẫn</div>
+            <div class="item">Quản lý vi phạm</div>
+            <div class="item">Quản lý khai báo</div>
+        </div>
+
+        
+        <div class="main grid">
+            <div class="router grid wide">
+                <a href="">QUẢN LÝ KHAI BÁO TẠM TRÚ</a>
+            </div>
+            <form class="container grid wide updateuser">
+                <h3 style="margin: 50px 0px 0px 30px;">Thông tin cơ sở lưu trú:</h3>
+                <div class="box boxwide" style="margin-top: 20px">
+
+                    <div class="item">
+                        <b>Tên cơ sở lưu trú:</b>
+                        <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <b>Địa chỉ:</b>
+                        <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <b>Chủ cơ sở lưu trú:</b>
+                        <input type="text"> 
+                    </div>
+                </div>
+                <h3 style="margin: 50px 0px 0px 30px;">Thông tin người đăng ký:</h3>
+                <div class="box boxwide" style="margin-top: 20px">
+                    
+                    <div class="item">
+                        <b>Họ và tên:</b>
+                    <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày đến:</b>
+                    <input type="date"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày đi:</b>
+                        <input type="date"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày khai báo:</b>
+                    <input type="date"> 
+                    </div>
+                    <div class="item">
+                        <b>Quốc tịch:</b>
+                    <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <b>Số passport:</b>
+                    <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày sinh:</b>
+                        <input type="date"> 
+                    </div>
+                    <div class="item">
+                        <b>Số điện thoại</b>
+                        <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <b>Email:</b>
+                        <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <b>Lý do khai báo:</b>
+                        <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <b>Trạng thái:</b>
+                        <input type="text"> 
+                    </div>
+                    <div class="item">
+                        <p>Tệp đính kèm:</p>
+                        <button>Nhấp xem hoặc tải về</button>
+                    </div>
+                </div>
+                <div class="box boxwide" style="margin-top: 20px; place-content: center;">
+                    
+                    <div class="box-checked">
+                        <div class="checked-tamtru">
+                            <input type="checkbox" id="check_true">
+                            <label for="input">Xét duyệt</label> 
+                        </div>
+                        <div class="checked-tamtru">
+                            <input type="checkbox" id="check_false">
+                            <label for="input">Không xét duyệt</label> 
+                        </div>
+                    </div>
+                    <div class="item">
+                        <b>Lý do không duyệt:</b>
+                        <textarea name="" id="" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="action">
+                    <button class="sumit_tamtru" style="background-color: #049803;">Xác nhận</button>
+                    <button>Xóa</button>
+                    <button>Khóa</button>
+                </div>
+                <div class="listuser">
+                    <div class="render">
+                        <h4>Danh sách người nước ngoài tạm trú</h4>
+                        <button>In danh sách</button>
+                    </div>
+                    <div class="head table">
+                        <div class="data">Họ và tên</div>
+
+                        <div class="data">Loại giấy phép</div>
+                        <div class="data">Ngày cấp</div>
+                        <div class="data">Ngày hết hạn</div>
+                        <div class="data">Mục đích cấp phép</div>
+                        <div class="data">Cơ sở khai báo</div>
+                        <div class="data">Trạng thái</div>
+                    </div>
+                    <div class="roww table">
+                        <div class="data">123123</div>
+                        <div class="data">123123</div>
+                        <div class="data">123123</div>
+                        <div class="data">1231ádasdass asdasd adasdádasdasasasd23</div>
+                        <div class="data">2131ádasasdasdádasdsaasd23</div>
+                        <div class="data">123123</div>
+                        <div class="data">12312312</div>
+                        
+                    </div>
+                    <div class="roww table">
+                        <div class="data">123123</div>
+                        <div class="data">123123</div>
+                        <div class="data">123123</div>
+                        <div class="data">1231ádasdassadasdádasdasasasd23</div>
+                        <div class="data">2131ádasasdasdádasdsaasd23</div>
+                        <div class="data">123123</div>
+                        <div class="data">12312312</div>
+                    </div>
+                    <div class="roww table">
+                        <div class="data">123123</div>
+                        <div class="data">123123</div>
+                        <div class="data">123123</div>
+                        <div class="data">1231ádasdassadasdádasdasasasd23</div>
+                        <div class="data">2131ádasasdasdádasdsaasd23</div>
+                        <div class="data">123123</div>
+                        <div class="data">12312312</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="footer grid">
+        <div class="container gridfoot" >
+            <div class="logo">
+                <img src="./image/logo.png" alt="">
+            </div>
+            <div class="info">
+                <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
+                <p><b>Giấy phép:</b> 612/GP-STTTT cấp ngày 21 tháng 10 năm 2016.</p>
+                <p><b>Trưởng Ban biên tập:</b> Trần Chí Cường, Phó Chủ tịch UBND thành phố.</p>
+                <p><b>Trụ sở:</b> 24 Trần Phú, P.Thạch Thang, Q. Hải Châu, TP. Đà Nẵng.</p>
+                <p><b>Điện thoại:</b> (+84.236) 3.817.366 </p>
+                <p><b>Email:</b> toasoan@danang.gov.vn</p>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const check_true = document.getElementById("check_true")
+        const check_false = document.getElementById("check_false")
+        check_true.onclick = ()=>{
+            if(check_true.checked){
+                check_false.checked =false
+            }
+        }
+
+
+        check_false.onclick= ()=>{
+            if(check_false.checked){
+                check_true.checked =false
+            }
+        }
+    </script>
+</body>
+</html>

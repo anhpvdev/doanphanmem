@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/header-footer.css">
+    <link rel="stylesheet" href="./css/registry.css">
+    <link rel="stylesheet" href="./css/quanhuyen.css">
+    <script src="./js/jquery.js"></script>
+    <style>
+
+.list_coso{
+
+    max-width: 1200px;
+    display: grid;
+    margin: auto;
+}
+        .list_coso .table{
+    display: flex;
+    height: fit-content;
+}
+.list_coso .table.head *{
+    font-weight: bold;
+    background-color: rgba(185, 185, 185,0.5);
+}
+
+.list_coso .table *{
+    border: 1px solid rgb(131, 131, 131);
+    place-content: center;
+    display: grid;
+
+    overflow: hidden;
+}
+
+/* .list_coso .table.row *{
+    flex-wrap: wrap;
+    overflow: none;
+} */
+
+
+/* .list_coso .table .data{
+    flex: 3;
+} */
+
+
+.list_coso h4{
+    font-size: 18px;
+    margin: 0px 0px 20px 0px;
+}
+
+
+.list_coso .render{
+    display: flex;
+    margin-bottom: 20px;
+
+}
+.list_coso .render h4{
+    flex: 1;
+}
+
+.list_coso .render button{
+    background-color: #92C1F9;  
+    color: #0500FF; 
+    border-radius: 10px;
+    width: 130px;
+    height: 42px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.list_coso .render button:hover{
+    background-color: #288BFF;
+    color: white;
+}
+
+.container .action{
+    display: flex;
+    place-content: center;
+    flex-wrap: wrap;
+}
+
+.container .action button{
+    margin: 20px;
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    background-color: #288BFF;
+    border: none;
+    cursor: pointer;
+}
+
+.container .action button:hover{
+    background-color: #6fb2fd;
+}
+
+    </style>
+</head>
+<body>
+    <div class="header grid">
+        <div class="container gridhead wide">
+            <div class="item">
+                <div class="logo">
+                    <a href=""><img src="./image/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">TRANG CHỦ</a>
+            </div>
+            <div class="item">
+                <a href="">GIỚI THIỆU</a>
+            </div>
+            <div class="item">
+                <a href="">THỦ TỤC</a>
+            </div>
+            <div class="item">
+                <a href="">QUY ĐỊNH</a>
+            </div>
+            <div class="item">
+                <a href="">HỖ TRỢ</a>
+            </div>
+            <div class="item">
+                <a href="">THÔNG TIN</a>
+            </div>
+            <div class="item">
+                <a href="">TIN TỨC</a>
+            </div>
+            <div class="item">
+                <a href="">LIÊN HỆ</a>
+            </div>
+            <div class="item seach">
+               <input type="text">
+            </div>
+            <div class="item user" id="user_show">
+                <a href="">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="main grid">
+        <div class="router grid wide">
+            <a href="">QUẢN LÝ CƠ SỞ LƯU TRÚ</a>
+        </div>
+        <form class="container registry">
+            <h3>THÔNG TIN CƠ SỞ LƯU TRÚ</h3>
+            <div class="box boxwide">
+                <div class="col">
+                    <div class="item">
+                        <p>Tên cơ sở lưu trú (*):</p>
+                        <div class="editbox">
+                            <input type="text" id="name">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Email(*):</p>
+                        <div class="editbox">
+                            <input type="text" id="email">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Số điện thoại (*):</p>
+                        <div class="editbox">
+                            <input type="text" id="phone">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>CCCD:</p>
+                        <div class="editbox">
+                            <input type="text" id="cccd">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Người đại diện (*):</p>
+                        <div class="editbox">
+                            <input type="text" id="user">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col">
+                    <div class="item">
+                        <p>Loại cơ sở lưu trú (*):</p>
+                        <div class="dropbox">
+                            <input type="text" id="type">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Quận / Huyện (*):</p>
+                        <div class="dropbox">
+                            <select name="quanhuyen" id="quanhuyen">
+                                <!-- <option value="0"></option> -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <p>Phường / Xã (*):</p>
+                        <div class="dropbox">
+                            <select name="phuongxa" id="phuongxa">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>Địa chỉ cụ thể (*):</p>
+                        <div class="editbox">
+                            <input type="text" id="adress">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action">
+                <button>Thêm</button>
+                <button>Cập nhật</button>
+                <button>Xóa</button>
+            </div>
+        </form>
+        <div class="list_coso" id="list_cs">
+            <div class="render">
+                <h4>Danh sách cơ sở lưu trú</h4>
+                <button>In danh sách</button>
+            </div>
+            <div class="head table row" >
+                <div class="data col c-2">Tên cơ sở</div>
+                <div class="data col c-1">Loại cơ sở</div>
+                <div class="data col c-2">Người đại diện</div>
+                <div class="data col c-2">Số điện thoại</div>
+                <div class="data col c-3">Địa chỉ</div>
+            </div>
+            <!-- <div class="roww table row">
+                <div class="data col c-2">123123</div>
+                <div class="data col c-1">123123</div>
+                <div class="data col c-2">123123</div>
+                <div class="data col c-2">123123123123</div>
+                <div class="data col c-3">2131ádasa sdasdádasdsaasd23</div>
+                
+            </div>
+            <div class="roww table row">
+                <div class="data col c-2">123123</div>
+                <div class="data col c-1">123123</div>
+                <div class="data col c-2">123123</div>
+                <div class="data col c-2">123123123123</div>
+                <div class="data col c-3">2131ádasa sdasdádasdsaasd23</div>
+            </div> -->
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="footer grid">
+        <div class="container gridfoot" >
+            <div class="logo">
+                <img src="./image/logo.png" alt="">
+            </div>
+            <div class="info">
+                <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
+                <p><b>Giấy phép:</b> 612/GP-STTTT cấp ngày 21 tháng 10 năm 2016.</p>
+                <p><b>Trưởng Ban biên tập:</b> Trần Chí Cường, Phó Chủ tịch UBND thành phố.</p>
+                <p><b>Trụ sở:</b> 24 Trần Phú, P.Thạch Thang, Q. Hải Châu, TP. Đà Nẵng.</p>
+                <p><b>Điện thoại:</b> (+84.236) 3.817.366 </p>
+                <p><b>Email:</b> toasoan@danang.gov.vn</p>
+
+            </div>
+        </div>
+    </div>
+<script src="./js/adress.js"></script>
+    <script>
+        const name = document.getElementById("name")
+        const email = document.getElementById("email")
+        const phone = document.getElementById("phone")
+        const cccd = document.getElementById("cccd")
+        const user = document.getElementById("user")
+        const type = document.getElementById("type")
+        const adress = document.getElementById("adress")
+
+
+
+        const list_cs = document.getElementById('list_cs')
+       
+          const token =  localStorage.getItem("accessToken")
+        async function getvalue(){
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/accommodation/all",
+                headers:{"Authorization": 'Bearer '+token },
+                
+                success: function(data) {
+                    console.log(data)
+                    let listcs = data.content
+                    for(i=0;i<listcs.length;i++){
+                        list_cs.innerHTML +=  ` <div class="roww table row" onclick="bindvalue(this)">
+                        <div class="data col c-2">${listcs[i].tenCoSo}</div>
+                        <div class="data col c-1">${listcs[i].loaiHinh}</div>
+                        <div class="data col c-2">${listcs[i].nguoiDaiDien}</div>
+                        <div class="data col c-2">${listcs[i].sdt}</div>
+                        <div class="data col c-3">${listcs[i].diaChiCoSo}</div>
+                    </div>`
+                    }
+                   resolve()
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message.responseJSON.message)
+                  
+                }
+            })
+            })
+        }
+
+        getvalue()
+
+        function bindvalue(node){
+            let bin_data = node.querySelectorAll(".data")
+            console.log(bin_data)
+            name.value = bin_data[0].innerHTML
+            email.value = 
+            phone.value = 
+            cccd.value =
+            user.value = 
+            type.value = 
+            adress.value = 
+        }
+
+
+    </script>
+</body>
+</html>
