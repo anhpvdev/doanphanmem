@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/grid.css">
-    <link rel="stylesheet" href="./css/header-footer.css">
-    <link rel="stylesheet" href="./css/registry.css">
-   <script src="./js/jquery.js"></script>
+    <link rel="stylesheet" href="../fe/css/grid.css">
+    <link rel="stylesheet" href="../fe/css/header-footer.css">
+    <link rel="stylesheet" href="../fe/css/registry.css">
+   <script src="../fe/js/jquery.js"></script>
 </head>
 <body>
     <div class="header grid">
         <div class="container gridhead wide">
             <div class="item">
                 <div class="logo">
-                    <a href="./home.html"><img src="./image/logo.png" alt=""></a>
+                    <a href="./home.html"><img src="../fe/image/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="item">
@@ -60,7 +60,7 @@
 
     <div class="main grid">
         <div class="router grid wide">
-            <a href="">ĐĂNG NHẬP</a>
+            <a href="">ĐĂNG NHẬP ADMIN</a>
         </div>
         <div class="container registry login">
             <h3>THÔNG TIN TÀI KHOẢN</h3>
@@ -91,7 +91,7 @@
                 </div>
                 <a href="" class="repass">Quên mật khẩu</a>    
                 <div class="regis">
-                    <label>Bạn chưa có tài khoản?  <a href="./dangky.html">Hãy đăng ký</a></label>
+                    <!-- <label>Bạn chưa có tài khoản?  <a href="./dangky.html">Hãy đăng ký</a></label> -->
                     <button id="login">Đăng Nhập</button>
                 </div>
 
@@ -110,7 +110,7 @@
     <div class="footer grid">
         <div class="container gridfoot" >
             <div class="logo">
-                <img src="./image/logo.png" alt="">
+                <img src="../fe/image/logo.png" alt="">
             </div>
             <div class="info">
                 <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
@@ -144,16 +144,16 @@
                         contentType:'application/json',
                         success: function(data) {
                             console.log(data)
-                            localStorage.setItem("accessToken",data.accessToken)
-                            localStorage.setItem("email",data.email)
-                            localStorage.setItem("id",data.id)
-                            localStorage.setItem("refreshToken",data.refreshToken)
+                            localStorage.setItem("ad_accessToken",data.accessToken)
+                            localStorage.setItem("ad_email",data.email)
+                            localStorage.setItem("ad_id",data.id)
+                            localStorage.setItem("ad_refreshToken",data.refreshToken)
                             alert("đăng nhập thành công")
                             window.location.href = "./home.html"
                         },error:function(message){
                             console.log(message.responseJSON.message)
-                            alert("có lỗi sảy ra")
-                            window.location.href = "./dangnhap.html"
+                            alert(message.responseJSON.message?.email||message.responseJSON.message)
+                            // window.location.reload()
                         }
                     })
             }

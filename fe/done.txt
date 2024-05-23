@@ -2,3 +2,4 @@
 đăng nhập
 cập nhật thông tin tài khoản
 đổi mật khẩu
+thêm-sửa-xóa cơ sở lưu trú

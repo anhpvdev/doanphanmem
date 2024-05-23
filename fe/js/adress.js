@@ -46,13 +46,14 @@ phuongxa.onclick = function(){
 }
 
 
-function find_phuong(id){
+function bind_phuong(id){
+    console.log(id)
     for(let i=0;i<listquan.length;i++){
         let listxa = listquan[i].phuongXas
        for(let j=0;j<listxa.length;j++){
         if(listxa[j].id==id){
-           
-            return {phuong:listxa[j],quan:listquan[i]}
+            quanhuyen.innerHTML = `<option value="${listquan[i].id}">${listquan[i].tenQuanHuyen}</option>` + quanhuyen.innerHTML
+            phuongxa.innerHTML = `<option value="${listxa[j].id}">${listxa[j].tenPhuongXa}</option>` + phuongxa.innerHTML
         }
        }
     }
