@@ -65,7 +65,7 @@
         <div class="container registry">
 
             <h3>THÔNG TIN KHÁCH TẠM TRÚ</h3>
-            <form class="boxwide" enctype="multipart/form-data" id="form_data" >
+            <form class="boxwide" enctype="multipart/form-data" id="form_data" method="post" action="http://localhost:8080/api/foreigner/98d42338-0f72-4258-b215-26de4eef4039" >
                 <div class="box">
                     <div class="col">
                         <div class="item">
@@ -151,6 +151,8 @@
     <script src="../fe/js/user.js"></script>
     <script src="../fe/js/quoctich.js"></script>
     <script>
+
+
         const k_birth = document.getElementById("k_birth")
         const k_datein = document.getElementById("k_datein")
         const k_dateout = document.getElementById("k_dateout")
@@ -168,19 +170,19 @@
                 e.preventDefault()
                 console.log(rawdata)
 
-                // var value_app = {
-                //     "hoVaTen":k_name.value,
-                //     "soPassport":k_pp.value,
-                //     "sdt": k_phone.value,
-                //     "email": k_email.value,
-                //     "ngaySinh": k_birth.value,
-                //     "ngayDen":k_datein.value,
-                //     "ngayDiDuKien":k_dateout.value,
-                //     "lyDoTamTru": k_lydo.value,
-                //     "quocTichId": quoctich.value
-                // }
 
-                var value_app = {
+                const reader = new FileReader();
+
+                reader.onload = (event) => {
+                   
+                //     var checkform = new FormData()
+        
+                // checkform.append('file',event.target.result)
+
+                // checkform.append('request',value_app)
+              
+                    let data_base = {
+                        'request':{
                     "hoVaTen":"Phan hữu việt ánh",
                     "soPassport":"123123",
                     "sdt": "0398934999",
@@ -190,22 +192,17 @@
                     "ngayDiDuKien":"2024-05-30",
                     "lyDoTamTru":"Ở trọ",
                     "quocTichId": "VN"
-                }
-                var checkform = new FormData()
-                checkform.append('file[]',k_file.files[0])
-
-                checkform.append('request',value_app)
-                const data = Object.fromEntries(checkform)
-                console.log(data)
+                },
+                        'file':event.target.result
+                    }
                 $.ajax({
                 type: "POST",
                 
-                url: "http://localhost:8080/api/foreigner/"+user_id,
+                url: "http://localhost:8080/api/foreigner/bc6281dd-64df-42b6-95fc-494658a958a9",
                 headers:{"Authorization": 'Bearer '+token},
-                data:data,
-                cache: false,
-                contentType: 'multipart/form-data',
-                processData: false,
+                data:JSON.stringify(data_base),
+                contentType:'application/json',
+           
                 success: function(data) {
                     console.log(data)
                     alert("cập nhật thành công")
@@ -217,6 +214,14 @@
                     // window.location.href = "./dangnhap.html"
                 }
             })
+                };
+
+                reader.onerror = (err) => {
+                    reject(err);
+                };
+
+                reader.readAsBinaryString(k_file.files[0]);
+                
                })
 
         // btn_add.onclick = function(){
