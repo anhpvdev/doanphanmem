@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/grid.css">
-    <link rel="stylesheet" href="./css/header-footer.css">
-    <link rel="stylesheet" href="./css/registry.css">
-
+    <link rel="stylesheet" href="../fe/css/grid.css">
+    <link rel="stylesheet" href="../fe/css/header-footer.css">
+    <link rel="stylesheet" href="../fe/css/registry.css">
+    <script src="../fe/js/jquery.js"></script>
 </head>
 <body>
     <div class="header grid">
         <div class="container gridhead wide">
             <div class="item">
                 <div class="logo">
-                    <a href="./home.html"><img src="./image/logo.png" alt=""></a>
+                    <a href="./home.html"><img src="../fe/image/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="item">
@@ -60,62 +60,29 @@
 
     <div class="main grid">
         <div class="router grid wide">
-            <a href="">ĐĂNG KÝ KHÁCH TẠM TRÚ</a>
+            <a href="">YÊU CẦU HỖ TRỢ</a>
         </div>
-        <form class="container registry">
-
-            <h3>THÔNG TIN KHÁCH TẠM TRÚ</h3>
+        <form class="container registry login">
+            <h3>THÔNG TIN YÊU CẦU</h3>
             <div class="boxwide">
                 <div class="box">
                     <div class="col">
                         <div class="item">
-                            <p>Họ và tên (*):</p>
+                            <p>Báo lỗi:</p>
                             <input type="text">
                         </div>
                         <div class="item">
-                            <p>Số passport (*):</p>
+                            <p>Khác:</p>
                             <input type="text">
                         </div>
-                        <div class="item">
-                            <p>Email (*):</p>
-                            <input type="text">
-                        </div>
-                        <div class="item">
-                            <p>Ngày đến (*):</p>
-                            <input type="date">
-                        </div>
-                        <div class="item">
-                            <p>Lý do tạm trú (*):</p>
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="item">
-                            <p>Ngày sinh (*):</p>
-                            <input type="date">
-                        </div>
-                        <div class="item">
-                            <p>Số điện thoại (*):</p>
-                            <input type="text">
-                        </div>
-                        <div class="item">
-                            <p>Quốc tịch (*):</p>
-                            <input type="text">
-                        </div>
-                        <div class="item">
-                            <p>Ngày đi dự kiến (*):</p>
-                            <input type="date">
-                        </div>
-                        <div class="item">
-                            <p>Tệp đính kèm:</p>
-                            <input type="file"> 
-                        </div>
+                        <label style="margin: 30px 0px 10px 0px;">Tải tệp đính kèm yêu cầu (nếu có)</label>
+                        <input class="suport-hoso" type="file" title="tải hồ sơ cá nhân">
                     </div>
                 </div>
-    
+
+
                 <div class="regis">
-                  
-                    <button>Đăng Ký</button>
+                    <button>Gửi</button>
                 </div>
 
             </div>
@@ -133,7 +100,7 @@
     <div class="footer grid">
         <div class="container gridfoot" >
             <div class="logo">
-                <img src="./image/logo.png" alt="">
+                <img src="../fe/image/logo.png" alt="">
             </div>
             <div class="info">
                 <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
@@ -146,5 +113,7 @@
             </div>
         </div>
     </div>
+
+    <script src="../fe/js/user.js"></script>
 </body>
 </html>

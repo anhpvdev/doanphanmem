@@ -1,0 +1,4 @@
+form post có dữ liệu fle
+(trang gửi yêu cầu hỗ trợ)
+(trang đăng ký khách tạm trú)
+(trang thêm văn bản admin)

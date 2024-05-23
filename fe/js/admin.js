@@ -1,6 +1,6 @@
-const user = localStorage.getItem("email")
-const token =  localStorage.getItem("accessToken")
-if(user){
-    let username = user.split("@")[0]
-    document.getElementById("user_show").innerHTML = "xin chào:" +username
+const admin = localStorage.getItem("ad_email")
+const ad_token =  localStorage.getItem("ad_accessToken")
+if(admin){
+    let adminname = admin.split("@")[0]
+    document.getElementById("user_show").innerHTML = "xin chào:" +adminname
 }
