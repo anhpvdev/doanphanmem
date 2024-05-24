@@ -65,7 +65,14 @@
         <div class="container registry">
 
             <h3>THÔNG TIN KHÁCH TẠM TRÚ</h3>
+            <a href="./capnhatthontinkhachtamtru.html">danh sách khách tạm trú</a>
             <form class="boxwide" enctype="multipart/form-data" id="form_data" >
+                <div class="item">
+                    <p>Cơ sở lưu trú:</p>
+                    <select name="" id="list_cslt">
+                       
+                    </select>
+                </div>
                 <div class="box">
                     <div class="col">
                         <div class="item">
@@ -151,6 +158,95 @@
     <script src="../fe/js/user.js"></script>
     <script src="../fe/js/quoctich.js"></script>
     <script>
+        const list_cslt = document.getElementById("list_cslt")
+        async function getvalue(){
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/accommodation/all",
+                headers:{"Authorization": 'Bearer '+token },
+                
+                success: function(data) {
+                    console.log(data)
+                    let listcs = data.content
+                    for(i=0;i<listcs.length;i++){
+                        list_cslt.innerHTML +=  ` <div class="roww table row" onclick="bindvalue('${listcs[i].id}')">
+                            <option value="${listcs[i].id}">${listcs[i].tenCoSo}</option>`
+                    }
+                   resolve()
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    window.location.href = "./dangnhap.html"
+                }
+            })
+            })
+        }
+
+        getvalue()
+    </script>
+    <script>
+         const k_birth = document.getElementById("k_birth")
+        const k_datein = document.getElementById("k_datein")
+        const k_dateout = document.getElementById("k_dateout")
+        const k_email = document.getElementById("k_email")
+        const k_file = document.getElementById("k_file")
+        const k_lydo = document.getElementById("k_lydo")
+        const k_name = document.getElementById("k_name")
+        const k_phone = document.getElementById("k_phone")
+        const k_pp = document.getElementById("k_pp")
+          document.addEventListener("DOMContentLoaded", function() {
+            $("#form_data").on('submit', function(e) {
+                e.preventDefault();
+                var formData = new FormData()
+
+                formData.append("file", k_file.files[0]);
+                let requestData = {
+                        "hoVaTen":k_name.value,
+                        "soPassport":k_pp.value,
+                        "sdt": k_phone.value,
+                        "email": k_email.value,
+                        "ngaySinh": k_birth.value,
+                        "ngayDen":k_datein.value+" 00:00",
+                        "ngayDiDuKien":k_dateout.value+" 00:00",
+                        "lyDoTamTru": k_lydo.value,
+                        "quocTichId": quoctich.value
+                };
+                console.log(requestData)
+                // let requestData = {
+                //     "hoVaTen": "nahsaudi",
+                //     "soPassport": "979889877",
+                //     "sdt": "0957781222",
+                //     "email": "tom2andjerry4@gmail.com",
+                //     "ngaySinh": "1991-07-06",
+                //     "ngayDen": "2024-05-16 09:50",
+                //     "ngayDiDuKien": "2024-06-01 09:50",
+                //     "lyDoTamTru": "Đi du lịch",
+                //     "quocTichId": "US"
+                // };
+                formData.append("request", new Blob([JSON.stringify(requestData)], { type: "application/json" }));
+                
+                var settings = {
+                    "url": "http://localhost:8080/api/foreigner/"+list_cslt.value,
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Authorization": "Bearer "+token
+                    },
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": formData
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });
+            });
+        });
+    </script>
+    <!-- <script>
         const k_birth = document.getElementById("k_birth")
         const k_datein = document.getElementById("k_datein")
         const k_dateout = document.getElementById("k_dateout")
@@ -180,32 +276,29 @@
                 //     "quocTichId": quoctich.value
                 // }
 
-                var value_app = {
-                    "hoVaTen":"Phan hữu việt ánh",
-                    "soPassport":"123123",
-                    "sdt": "0398934999",
-                    "email":"anh123@gmil.com",
-                    "ngaySinh": "2000-03-04",
-                    "ngayDen":"2024-05-23",
-                    "ngayDiDuKien":"2024-05-30",
-                    "lyDoTamTru":"Ở trọ",
-                    "quocTichId": "VN"
-                }
-                var checkform = new FormData()
-                checkform.append('file[]',k_file.files[0])
-
-                checkform.append('request',value_app)
-                const data = Object.fromEntries(checkform)
-                console.log(data)
+                var value_app ={
+                    "request": {
+                        "hoVaTen": "string",
+                        "soPassport": "string",
+                        "sdt": "string",
+                        "email": "string",
+                        "ngaySinh": "2024-05-23T11:04:29.479Z",
+                        "ngayDen": "2024-05-23T11:04:29.479Z",
+                        "ngayDiDuKien": "2024-05-23T11:04:29.479Z",
+                        "lyDoTamTru": "string",
+                        "quocTichId": "string"
+                    },
+                    "file":k_file.files[0]
+                    }
+              
+                console.log(value_app)
                 $.ajax({
                 type: "POST",
                 
                 url: "http://localhost:8080/api/foreigner/"+user_id,
                 headers:{"Authorization": 'Bearer '+token},
-                data:data,
-                cache: false,
-                contentType: 'multipart/form-data',
-                processData: false,
+                data:JSON.stringify(value_app),
+                contentType:'application/json',
                 success: function(data) {
                     console.log(data)
                     alert("cập nhật thành công")
@@ -219,53 +312,6 @@
             })
                })
 
-        // btn_add.onclick = function(){
-        //     if(!k_birth.value ||!k_datein.value||!k_dateout.value||!k_email.value||!k_lydo.value||!k_name.value||!k_phone.value||!k_pp.value) alert("vui lòng không để trông")
-        //     else{
-        //         var value_app = {
-        //             "hoVaTen":k_name.value,
-        //             "soPassport":k_pp.value,
-        //             "sdt": k_phone.value,
-        //             "email": k_email.value,
-        //             "ngaySinh": k_birth.value,
-        //             "ngayDen":k_datein.value,
-        //             "ngayDiDuKien":k_dateout.value,
-        //             "lyDoTamTru": k_lydo.value,
-        //             "quocTichId": quoctich.value
-        //         }
-        //         var form_data = new FormData()
-        //         form_data.append('request',value_app)
-
-        //         form_data.append('file',k_file.files[0])
-
-             
-               
-        //     //  console.log(add_example)
-        //      console.log(user_id)
-        //         $.ajax({
-        //         type: "POST",
-        //         enctype: 'multipart/form-data',
-        //         url: "http://localhost:8080/api/foreigner/"+user_id,
-        //         headers:{"Authorization": 'Bearer '+token ,},
-        //         data:form_data,
-        //         contentType: false,
-        //         cache: false,
-        //         processData:false,
-        //         success: function(data) {
-        //             console.log(data)
-        //             alert("cập nhật thành công")
-         
-
-        //         },error:function(message){
-        //             console.log(message)
-        //             alert(message.responseJSON.message)
-        //             // window.location.href = "./dangnhap.html"
-        //         }
-        //     })
-
-
-        //     }
-        // }
-    </script>
+    </script> -->
 </body>
 </html>

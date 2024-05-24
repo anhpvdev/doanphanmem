@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fe/css/grid.css">
+    <link rel="stylesheet" href="../fe/css/header-footer.css">
+    <link rel="stylesheet" href="../fe/css/update.css">
+    <script src="../fe/js/jquery.js"></script>
+    <style>
+        .item button{
+            height: 30px;
+            margin: 10px;
+            width: 240px;
+            border-radius: 5px;
+            background-color: #ffb4b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header grid">
+        <div class="container gridhead wide">
+            <div class="item">
+                <div class="logo">
+                    <a href="./home.html"><img src="../fe/image/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">TRANG CHỦ</a>
+            </div>
+            <div class="item">
+                <a href="">GIỚI THIỆU</a>
+            </div>
+            <div class="item">
+                <a href="">THỦ TỤC</a>
+            </div>
+            <div class="item">
+                <a href="">QUY ĐỊNH</a>
+            </div>
+            <div class="item">
+                <a href="">HỖ TRỢ</a>
+            </div>
+            <div class="item">
+                <a href="">THÔNG TIN</a>
+            </div>
+            <div class="item">
+                <a href="">TIN TỨC</a>
+            </div>
+            <div class="item">
+                <a href="">LIÊN HỆ</a>
+            </div>
+            <div class="item seach">
+               <input type="text">
+            </div>
+            <div class="item user">
+                <a href="">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="main grid">
+        <div class="router grid wide">
+            <a href="">CẬP NHẬT THÔNG TIN KHÁCH TẠM TRÚ</a>
+        </div>
+        <div class="container grid wide updateuser">
+            <div class="item">
+                <p>Cơ sở lưu trú:</p>
+                <select name="" id="list_cslt">
+                    <option value="0"></option>`
+                </select>
+            </div>
+            <div class="box boxwide">
+                <div class="item">
+                    <b>Họ và tên:</b>
+                   <input type="text"> 
+                </div>
+                <div class="item">
+                    <b>Ngày sinh:</b>
+                   <input type="date"> 
+                </div>
+                <div class="item">
+                    <b>Ngày đến:</b>
+                   <input type="date"> 
+                </div>
+                <div class="item">
+                    <b>Ngày đi:</b>
+                   <input type="date"> 
+                </div>
+                <div class="item">
+                    <b>Passport:</b>
+                   <input type="text"> 
+                </div>
+                <div class="item">
+                    <b>Quốc tịch:</b>
+                   <input type="text"> 
+                </div>
+                <div class="item">
+                    <b>Ghi chú:</b>
+                   <input type="text"> 
+                </div>
+                <div class="item">
+                    <p>Tệp đính kèm:</p>
+                    <button>Nhấp xem hoặc tải về</button>
+                </div>
+            </div>
+            <div class="action">
+                <button>Đăng ký mới</button>
+                <button>Cập nhật</button>
+            </div>
+            <div class="listuser"id="list_kshow">
+                <div class="render">
+                    <h4>Danh sách người nước ngoài tạm trú</h4>
+                    <button>In danh sách</button>
+                </div>
+                <div class="head table">
+                    <div class="stt">STT</div>
+                    <div class="data">Họ và tên</div>
+                    <div class="data">Ngày sinh</div>
+                    <div class="data">Ngày đến</div>
+                    <div class="data">Ngày đi</div>
+                    <div class="data">Passport</div>
+                    <div class="data">Quốc tịch</div>
+                    <div class="data">Ghi chú</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="footer grid">
+        <div class="container gridfoot" >
+            <div class="logo">
+                <img src="../fe/image/logo.png" alt="">
+            </div>
+            <div class="info">
+                <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
+                <p><b>Giấy phép:</b> 612/GP-STTTT cấp ngày 21 tháng 10 năm 2016.</p>
+                <p><b>Trưởng Ban biên tập:</b> Trần Chí Cường, Phó Chủ tịch UBND thành phố.</p>
+                <p><b>Trụ sở:</b> 24 Trần Phú, P.Thạch Thang, Q. Hải Châu, TP. Đà Nẵng.</p>
+                <p><b>Điện thoại:</b> (+84.236) 3.817.366 </p>
+                <p><b>Email:</b> toasoan@danang.gov.vn</p>
+
+            </div>
+        </div>
+    </div>
+    <script src="../fe/js/user.js"></script>
+    <script>
+        const list_cslt = document.getElementById("list_cslt")
+        async function getvalue(){
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/accommodation/all",
+                headers:{"Authorization": 'Bearer '+token },
+                
+                success: function(data) {
+                    console.log(data)
+                    let listcs = data.content
+                    for(i=0;i<listcs.length;i++){
+                        list_cslt.innerHTML +=  ` <div class="roww table row" onclick="bindvalue('${listcs[i].id}')">
+                            <option value="${listcs[i].id}">${listcs[i].tenCoSo}</option>`
+                    }
+                   resolve()
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    window.location.href = "./dangnhap.html"
+                }
+            })
+            })
+        }
+
+        getvalue()
+
+        list_cslt.addEventListener("change",function(){
+        console.log(this.value)
+        if(this.value!=0){
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/foreigner/"+this.value+"/all",
+                headers:{"Authorization": 'Bearer '+token },
+                
+                success: function(data) {
+                    console.log(data)
+                  var data_show = data.content
+                    var list_kshow = document.getElementById("list_kshow")
+                    list_kshow.innerHTML = ` <div class="render">
+                    <h4>Danh sách người nước ngoài tạm trú</h4>
+                    <button>In danh sách</button>
+                </div>
+                <div class="head table">
+                    <div class="stt">STT</div>
+                    <div class="data">Họ và tên</div>
+                    <div class="data">Ngày sinh</div>
+                    <div class="data">Ngày đến</div>
+                    <div class="data">Ngày đi</div>
+                    <div class="data">Passport</div>
+                    <div class="data">Quốc tịch</div>
+                    <div class="data">Ghi chú</div>
+                </div>`
+                 for(let i=0;i<data_show.length;i++){
+                    list_kshow.innerHTML += `  <div class="roww table"  onclick="bindvalue('${data_show[i].idNguoiNuocNgoai}')">
+                    <div class="stt">${i+1}</div>
+                    <div class="data">${data_show[i].hoVaTen}</div>
+                    <div class="data">${data_show[i].ngaySinh}</div>
+                    <div class="data">${data_show[i].ngayDen}</div>
+                    <div class="data">${data_show[i].ngayDiDuKien}</div>
+                    <div class="data">${data_show[i].soPassport}</div>
+                    <div class="data">${data_show[i].tenQuocTich}</div>
+                    <div class="data">${data_show[i].trangThaiGiayPhep}</div>
+                </div>`
+                 }
+                  
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                   
+                }
+        })
+        }
+    })
+
+    function bindvalue(index){
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/foreigner/details/"+index,
+                headers:{"Authorization": 'Bearer '+token },
+                
+                success: function(data) {
+                    console.log(data)
+                 
+                },error:function(message){
+                    console.log(message)
+                    alert(message.responseJSON.message)
+                  
+                }
+            })
+        }
+    </script>
+</body>
+</html>
