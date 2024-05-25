@@ -107,73 +107,82 @@
             <div class="router grid wide">
                 <a href="">QUẢN LÝ KHAI BÁO TẠM TRÚ</a>
             </div>
-            <form class="container grid wide updateuser">
+            <div class="container grid wide updateuser">
                 <h3 style="margin: 50px 0px 0px 30px;">Thông tin cơ sở lưu trú:</h3>
                 <div class="box boxwide" style="margin-top: 20px">
 
                     <div class="item">
                         <b>Tên cơ sở lưu trú:</b>
-                        <input type="text"> 
+                        <input type="text" id="cs_name"> 
                     </div>
                     <div class="item">
                         <b>Địa chỉ:</b>
-                        <input type="text"> 
+                        <input type="text" id="cs_dc"> 
                     </div>
-                    <div class="item">
-                        <b>Chủ cơ sở lưu trú:</b>
-                        <input type="text"> 
-                    </div>
+                  
                 </div>
                 <h3 style="margin: 50px 0px 0px 30px;">Thông tin người đăng ký:</h3>
                 <div class="box boxwide" style="margin-top: 20px">
-                    
                     <div class="item">
                         <b>Họ và tên:</b>
-                    <input type="text"> 
-                    </div>
-                    <div class="item">
-                        <b>Ngày đến:</b>
-                    <input type="date"> 
-                    </div>
-                    <div class="item">
-                        <b>Ngày đi:</b>
-                        <input type="date"> 
-                    </div>
-                    <div class="item">
-                        <b>Ngày khai báo:</b>
-                    <input type="date"> 
-                    </div>
-                    <div class="item">
-                        <b>Quốc tịch:</b>
-                    <input type="text"> 
-                    </div>
-                    <div class="item">
-                        <b>Số passport:</b>
-                    <input type="text"> 
+                       <input type="text" id="k_name"> 
                     </div>
                     <div class="item">
                         <b>Ngày sinh:</b>
-                        <input type="date"> 
+                       <input type="date"  id="k_birth"> 
                     </div>
                     <div class="item">
-                        <b>Số điện thoại</b>
-                        <input type="text"> 
+                        <b>Ngày đến:</b>
+                       <input type="date" id="k_datein"> 
                     </div>
                     <div class="item">
-                        <b>Email:</b>
-                        <input type="text"> 
+                        <b>Ngày đi:</b>
+                       <input type="date" id="k_dateout"> 
                     </div>
                     <div class="item">
-                        <b>Lý do khai báo:</b>
-                        <input type="text"> 
+                        <b>Passport:</b>
+                       <input type="text" id="k_pp"> 
+                    </div>
+                    <div class="item">
+                        <b>Quốc tịch:</b>
+                       <input type="text" id="k_qt"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày đi dự kiến:</b>
+                       <input type="date" id="dateout" > 
+                    </div>
+                    <div class="item">
+                        <b>Gmail:</b>
+                       <input type="text" id="k_email"> 
+                    </div>
+                    <div class="item">
+                        <b>Số điện thoại:</b>
+                       <input type="text"  id="k_phone"> 
+                    </div>
+                    <!-- <div class="item">
+                        <p>ID người nước ngoài:</p>
+                        <input type="text" readonly="readonly"  id="k_id"> 
+                    </div> -->
+    
+                 
+                    <div class="item">
+                        <b>Ngày khai báo:</b>
+                        <input type="date" id="k_dc"> 
+                    </div>
+                   
+                    <div class="item">
+                        <b>Lý do tạm trú:</b>
+                        <input type="text" id="k_ld"> 
                     </div>
                     <div class="item">
                         <b>Trạng thái:</b>
-                        <input type="text"> 
+                        <input type="text" id="k_tt"> 
                     </div>
                     <div class="item">
                         <p>Tệp đính kèm:</p>
-                        <button>Nhấp xem hoặc tải về</button>
+                        <input type="hidden" id="k_file">
+                        <input type="hidden" id="k_idverify">
+                        <button id="show__file" onclick="showfile()">Nhấp xem hoặc tải về</button>
                     </div>
                 </div>
                 <div class="box boxwide" style="margin-top: 20px; place-content: center;">
@@ -189,12 +198,12 @@
                         </div>
                     </div>
                     <div class="item">
-                        <b>Lý do không duyệt:</b>
-                        <textarea name="" id="" cols="30" rows="5"></textarea>
+                        <b id="title_access"></b>
+                        <textarea  cols="30" rows="5" id="content_unv"></textarea>
                     </div>
                 </div>
                 <div class="action">
-                    <button class="sumit_tamtru" style="background-color: #049803;">Xác nhận</button>
+                    <button class="sumit_tamtru" style="background-color: #049803;" id="verify">Xác nhận</button>
                     <button>Xóa</button>
                     <button>Khóa</button>
                 </div>
@@ -215,7 +224,7 @@
                     </div>
                 
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -248,6 +257,7 @@
         check_true.onclick = ()=>{
             if(check_true.checked){
                 check_false.checked =false
+                document.getElementById("title_access").innerHTML = "Mục dích cấp phép:"
             }
         }
 
@@ -255,6 +265,8 @@
         check_false.onclick= ()=>{
             if(check_false.checked){
                 check_true.checked =false
+                document.getElementById("title_access").innerHTML = "Lý do không duyệt:"
+                
             }
         }
     </script>
@@ -271,7 +283,7 @@
                     console.log(data)
                     var showus = data.content
                    for(i=0;i<showus.length;i++){
-                    show_us.innerHTML +=` <div class="roww table">
+                    show_us.innerHTML +=` <div class="roww table"  onclick="bindvalue('${showus[i].idGiayPhep}')">
                         <div class="data">${showus[i].nguoiNuocNgoai.hoVaTen}</div>
                         <div class="data">${showus[i].nguoiNuocNgoai.email}</div>
                         <div class="data">${showus[i].ngayDen}</div>
@@ -293,7 +305,157 @@
         }
 
         getvalue()
+
+        
+        function showfile(){
+            console.log("huhuhuuu")
+            console.log(k_file.value)
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/foreigner/"+k_file.value,
+                headers:{"Authorization": 'Bearer '+token },
+                
+                success: function(data) {          
+                    console.log(data)
+                    window.open(data)
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                
+                }
+            })
+        }
+        const k_name = document.getElementById("k_name") 
+
+        const k_birth = document.getElementById("k_birth") 
+
+        const k_datein = document.getElementById("k_datein") 
+        const k_file = document.getElementById("k_file") 
+        const k_dateout = document.getElementById("k_dateout") 
+            
+        const k_pp = document.getElementById("k_pp") 
+        
+        const k_qt = document.getElementById("k_qt") 
+        const k_email  = document.getElementById("k_email") 
+        const k_phone  = document.getElementById("k_phone") 
+        // const k_id  = document.getElementById("k_id") 
+        const datepp = document.getElementById("dateout") 
+        const show__file = document.getElementById("show__file") 
+        const k_dc  = document.getElementById("k_id") 
+        const k_tt = document.getElementById("k_tt") 
+        const k_ld = document.getElementById("k_ld") 
+
+        const k_idverify = document.getElementById("k_idverify") 
+        // const cs_name = document.getElementById("cs_name") 
+        // const cs_dc = document.getElementById("cs_dc") 
+
+        function bindvalue(index){
+            $.ajax({
+                type: "get",
+                url: " http://localhost:8080/api/license/all",
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {
+                    console.log(data)
+                    var showus = data.content
+                   for(i=0;i<showus.length;i++){
+                    if(showus[i].idGiayPhep==index){
+                        // cs_dc.value = showus[i].diaChiTamTru
+                        // cs_name.value = showus[i].tenCoSo
+                        k_name.value =showus[i].nguoiNuocNgoai.hoVaTen
+                        k_birth.value =showus[i].nguoiNuocNgoai.ngaySinh
+                        k_datein.value=showus[i].ngayDen.slice(0,10)
+                        k_dateout.value = showus[i].ngayRoiKhoi
+                        datepp.value = showus[i].ngayDiDuKien.slice(0,10)
+                        k_email.value  = showus[i].nguoiNuocNgoai.email
+                        k_phone.value  = showus[i].nguoiNuocNgoai.sdt
+                        // k_id.value = showus[i].nguoiNuocNgoai.idNguoiNuocNgoai
+                        k_pp.value =showus[i].nguoiNuocNgoai.soPassport
+                        k_qt.value=showus[i].nguoiNuocNgoai.tenQuocTich
+                        k_file.value = showus[i].idCoSo+"/"+showus[i].nguoiNuocNgoai.idNguoiNuocNgoai +"/file/"+showus[i].tepDinhKem;
+                        show__file.innerHTML = showus[i].tepDinhKem;
+                        // k_dc.value =
+                        k_ld.value = showus[i].lyDoTamTru;
+                        k_tt.value = showus[i].trangThai;
+                        k_idverify.value = showus[i].idGiayPhep
+                    }
+
+                   }
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                }
+            })
+        }
        
+    </script>
+    <script>
+        const verify = document.getElementById("verify")
+        verify.onclick=function(){
+            if(check_true.checked || check_false.checked){
+                var content_unv = document.getElementById("content_unv")
+                if(check_true.checked){
+                    let ex_data = {
+                        "idGiayPhep":k_idverify.value,
+                        "isApproved":true,
+                        "mucDichCapPhep":content_unv.value
+                    }
+                    console.log(ex_data)
+                    let result = confirm( `Xét duyệt yêu cầu ?` );
+
+                    if ( result ) {
+                        $.ajax({
+                            type: "post",
+                            url: "http://localhost:8080/api/license/verification",
+                            headers:{"Authorization": 'Bearer '+ad_token },
+                            data:JSON.stringify(ex_data),
+                            contentType:'application/json',
+                            success: function(data) {
+                                console.log(data)
+                                alert("Đã xét duyệt yêu cầu")
+                                window.location.reload()
+
+                            },error:function(message){
+                                console.log(message)
+                                alert("có lỗi sảy ra")
+                                // window.location.href = "./dangnhap.html"
+                            }
+                        })
+                    }
+                }else{
+                    let ex_data = {
+                        "idGiayPhep":k_idverify.value,
+                        "isApproved":true,
+                        "lyDoKhongDuyet":content_unv.value,
+                    }
+                    console.log(ex_data)
+                    let result = confirm( `Không xét duyệt yêu cầu?` );
+
+                    if ( result ) {
+                        $.ajax({
+                            type: "post",
+                            url: "http://localhost:8080/api/license/verification",
+                            headers:{"Authorization": 'Bearer '+ad_token },
+                            data:JSON.stringify(ex_data),
+                            contentType:'application/json',
+                            success: function(data) {
+                                console.log(data)
+                                alert("không xét duyệt yêu cầu")
+                                window.location.reload()
+
+                            },error:function(message){
+                                console.log(message)
+                                alert("có lỗi sảy ra")
+                                // window.location.href = "./dangnhap.html"
+                            }
+                        })
+                    }
+                }
+            }else{
+                alert("vui lòng chọn xác nhận hoặc ko")
+            }
+        }
     </script>
 </body>
 </html>

@@ -105,7 +105,7 @@
                 </div>
                 <div class="item">
                     <b>Ngày đi dự kiến:</b>
-                   <input type="text" id="dateout"> 
+                   <input type="date" id="dateout" > 
                 </div>
                 <div class="item">
                     <b>Gmail:</b>
@@ -113,20 +113,21 @@
                 </div>
                 <div class="item">
                     <b>Số điện thoại:</b>
-                   <input type="date"  id="k_phone"> 
+                   <input type="text"  id="k_phone"> 
                 </div>
                 <div class="item">
-                    <p>ID đăng ký:</p>
-                    <input type="date"  id="k_id"> 
+                    <p>ID người nước ngoài:</p>
+                    <input type="text" readonly="readonly"  id="k_id"> 
                 </div>
                 <div class="item">
                     <p>Tệp đính kèm:</p>
-                    <button>Nhấp xem hoặc tải về</button>
+                    <input type="hidden" id="k_file">
+                    <button id="show_k_file">Nhấp xem hoặc tải về</button>
                 </div>
             </div>
 
             <div class="action">
-                <button>Đăng ký mới</button>
+                <!-- <button>Đăng ký mới</button> -->
                 <button>Cập nhật</button>
             </div>
             <div class="listuser"id="list_kshow">
@@ -256,9 +257,9 @@
     const k_name = document.getElementById("k_name") 
 
     const k_birth = document.getElementById("k_birth") 
-         
+
     const k_datein = document.getElementById("k_datein") 
-          
+    const k_file = document.getElementById("k_file") 
     const k_dateout = document.getElementById("k_dateout") 
         
     const k_pp = document.getElementById("k_pp") 
@@ -268,52 +269,90 @@
     const k_phone  = document.getElementById("k_phone") 
     const k_id  = document.getElementById("k_id") 
     const datepp = document.getElementById("dateout") 
-    
-    function bindvalue(index){
-            $.ajax({
-                type: "get",
-                url: "http://localhost:8080/api/foreigner/details/"+index,
-                headers:{"Authorization": 'Bearer '+token },
+    const show_k_file = document.getElementById("show_k_file") 
+    // function bindvalue(index){
+    //         $.ajax({
+    //             type: "get",
+    //             url: "http://localhost:8080/api/foreigner/details/"+index,
+    //             headers:{"Authorization": 'Bearer '+token },
                 
-                success: function(data) {
-                    console.log(data)
-                    k_name.value =data.hoVaTen
-                    k_birth.value =data.ngaySinh
-                    // k_datein.value=data.
-                    // k_dateout.value=data.
-                    // datepp.value=data.
-                    k_email.value  = data.email
-                    k_phone.value  = data.sdt
-                    k_id.value = data.id
-                    k_pp.value =data.soPassport
-                    k_qt.value=data.tenQuocTich
-                },error:function(message){
-                    console.log(message)
-                    alert(message.responseJSON.message)
+    //             success: function(data) {
+    //                 console.log(data)
+    //                 k_name.value =data.hoVaTen
+    //                 k_birth.value =data.ngaySinh
+    //                 // k_datein.value=data.
+    //                 // k_dateout.value=data.
+    //                 // datepp.value=data.
+    //                 k_email.value  = data.email
+    //                 k_phone.value  = data.sdt
+    //                 k_id.value = data.id
+    //                 k_pp.value =data.soPassport
+    //                 k_qt.value=data.tenQuocTich
+    //             },error:function(message){
+    //                 console.log(message)
+    //                 alert(message.responseJSON.message)
                   
+    //             }
+    //         })
+    //     }
+   function bindvalue(index){
+        $.ajax({
+            type: "get",
+            url: "http://localhost:8080/api/foreigner/"+list_cslt.value+"/all",
+            headers:{"Authorization": 'Bearer '+token },
+            
+            success: function(data) {
+                var listscan = data.content
+                for(i=0;i<listscan.length;i++){
+                    if(index==listscan[i].idNguoiNuocNgoai){
+                        if(listscan[i].ngayRoiKhoi){
+                            listscan[i].ngayRoiKhoi = listscan[i].ngayRoiKhoi.slice(0,10)
+                        }else{
+                            listscan[i].ngayRoiKhoi = ''
+                        }
+                        console.log(listscan[i])
+                        k_name.value =listscan[i].hoVaTen
+                        k_birth.value =listscan[i].ngaySinh
+                        k_datein.value=listscan[i].ngayDen.slice(0,10)
+                        k_dateout.value = listscan[i].ngayRoiKhoi
+                        datepp.value = listscan[i].ngayDiDuKien.slice(0,10)
+                        k_email.value  = listscan[i].email
+                        k_phone.value  = listscan[i].sdt
+                        k_id.value = listscan[i].idNguoiNuocNgoai
+                        k_pp.value =listscan[i].soPassport
+                        k_qt.value=listscan[i].tenQuocTich
+                        k_file.value = listscan[i].tepDinhKemMoiNhat
+                        show_k_file.innerHTML = listscan[i].tepDinhKemMoiNhat
+                    }
                 }
-            })
-        }
+            
+            
 
-//         $.ajax({
-//         type: "get",
-//         url: "http://localhost:8080/api/foreigner/"+this.value+"/all",
-//         headers:{"Authorization": 'Bearer '+token },
-        
-//         success: function(data) {
-//             console.log(data)
-//           var data_show = data.content
-//             var list_kshow = document.getElementById("list_kshow")
-          
-//          }
-          
+            },error:function(message){
+                console.log(message)
+                alert(message?.responseJSON?.message||"có lỗi sảy ra")
+            
+            }
+        })
+    }
 
-//         },error:function(message){
-//             console.log(message)
-//             alert(message?.responseJSON?.message||"có lỗi sảy ra")
-           
-//         }
-// })
+    show_k_file.onclick = function(){
+        console.log(k_file.value)
+        $.ajax({
+            type: "get",
+            url: "http://localhost:8080/api/foreigner/"+list_cslt.value+"/"+k_id.value+"/file/"+k_file.value,
+            headers:{"Authorization": 'Bearer '+token },
+            
+            success: function(data) {          
+                console.log(data)
+                window.open(data)
+            },error:function(message){
+                console.log(message)
+                alert(message?.responseJSON?.message||"có lỗi sảy ra")
+            
+            }
+        })
+    }
     </script>
     
 </body>
