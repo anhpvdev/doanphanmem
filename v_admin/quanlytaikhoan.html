@@ -124,6 +124,7 @@
                     <!-- <button id="btn_update">Sửa</button> -->
                     <button id="btn_delete">Xóa</button>
                     <button id="btn_ban">Khóa</button>
+                    <button id="btn_unban">Mở Khóa</button>
                 </div>
                 <div class="listuser" id="list_user">
                     <div class="render">
@@ -189,18 +190,19 @@
         
         const btn_delete = document.getElementById("btn_delete")
         const btn_ban = document.getElementById("btn_ban")
-
+        const btn_unban = document.getElementById("btn_unban")
         function getvalue(){
 
             $.ajax({
                 type: "get",
-                url: "http://localhost:8080/api/admin/account/all",
+                url: "http://localhost:8080/api/admin/account/all?pageSize=10",
                 headers:{"Authorization": 'Bearer '+ad_token },
                 
                 success: function(data) {
                     console.log(data)
                     let listur = data.content
                     for(let i=0;i<listur.length;i++){
+                        if(listur[i].vaiTro =="ChuCS"){
                         show_user.innerHTML += ` <div class="roww table" onclick="bindvalue('${listur[i].id}')">
                         <div class="stt">${i+1}</div>
                         <div class="data">${listur[i].hoVaTen}</div>
@@ -210,6 +212,7 @@
                         <div class="data">${listur[i].cccd}</div>
                         <div class="data">${listur[i].trangThai}</div>
                     </div>`
+                }
                     }
                   
 
@@ -283,11 +286,37 @@
                    
                     $.ajax({
                         type: "PUT",
-                        url: "http://localhost:8080/api/admin/account/"+ac_id.value,
+                        url: "http://localhost:8080/api/admin/account/ban/"+ac_id.value,
                         headers:{"Authorization": 'Bearer '+ad_token },
                         success: function(data) {
                             console.log(data)
                             alert("Đã cấm người dùng")
+                            window.location.reload()
+
+                        },error:function(message){
+                            console.log(message)
+                            alert("có lỗi sảy ra")
+                            // window.location.href = "./dangnhap.html"
+                        }
+                    })
+                }
+            }
+        }
+
+        btn_unban.onclick = function(){
+            if(!ac_id.value)alert("Vui lòng chọn tài khoản cần khóa")
+            else{
+                let result = confirm( `Bạn muốn mở khóa người dùng ${ac_email.value}?` );
+
+                if ( result ) {
+                   
+                    $.ajax({
+                        type: "PUT",
+                        url: "http://localhost:8080/api/admin/account/unban/"+ac_id.value,
+                        headers:{"Authorization": 'Bearer '+ad_token },
+                        success: function(data) {
+                            console.log(data)
+                            alert("Đã mở khóa người dùng")
                             window.location.reload()
 
                         },error:function(message){

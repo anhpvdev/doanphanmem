@@ -178,7 +178,7 @@
                 },error:function(message){
                     console.log(message)
                     alert(message?.responseJSON?.message||"có lỗi sảy ra")
-                    window.location.href = "./dangnhap.html"
+                   
                 }
             })
             })
@@ -242,6 +242,7 @@
 
                 $.ajax(settings).done(function (response) {
                     console.log(response);
+                    window.location.reload()
                 });
             });
         });

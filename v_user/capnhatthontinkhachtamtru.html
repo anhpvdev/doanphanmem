@@ -81,37 +81,50 @@
             <div class="box boxwide">
                 <div class="item">
                     <b>Họ và tên:</b>
-                   <input type="text"> 
+                   <input type="text" id="k_name"> 
                 </div>
                 <div class="item">
                     <b>Ngày sinh:</b>
-                   <input type="date"> 
+                   <input type="date"  id="k_birth"> 
                 </div>
                 <div class="item">
                     <b>Ngày đến:</b>
-                   <input type="date"> 
+                   <input type="date" id="k_datein"> 
                 </div>
                 <div class="item">
                     <b>Ngày đi:</b>
-                   <input type="date"> 
+                   <input type="date" id="k_dateout"> 
                 </div>
                 <div class="item">
                     <b>Passport:</b>
-                   <input type="text"> 
+                   <input type="text" id="k_pp"> 
                 </div>
                 <div class="item">
                     <b>Quốc tịch:</b>
-                   <input type="text"> 
+                   <input type="text" id="k_qt"> 
                 </div>
                 <div class="item">
-                    <b>Ghi chú:</b>
-                   <input type="text"> 
+                    <b>Ngày đi dự kiến:</b>
+                   <input type="text" id="dateout"> 
+                </div>
+                <div class="item">
+                    <b>Gmail:</b>
+                   <input type="text" id="k_email"> 
+                </div>
+                <div class="item">
+                    <b>Số điện thoại:</b>
+                   <input type="date"  id="k_phone"> 
+                </div>
+                <div class="item">
+                    <p>ID đăng ký:</p>
+                    <input type="date"  id="k_id"> 
                 </div>
                 <div class="item">
                     <p>Tệp đính kèm:</p>
                     <button>Nhấp xem hoặc tải về</button>
                 </div>
             </div>
+
             <div class="action">
                 <button>Đăng ký mới</button>
                 <button>Cập nhật</button>
@@ -239,6 +252,23 @@
         }
     })
 
+
+    const k_name = document.getElementById("k_name") 
+
+    const k_birth = document.getElementById("k_birth") 
+         
+    const k_datein = document.getElementById("k_datein") 
+          
+    const k_dateout = document.getElementById("k_dateout") 
+        
+    const k_pp = document.getElementById("k_pp") 
+       
+    const k_qt = document.getElementById("k_qt") 
+    const k_email  = document.getElementById("k_email") 
+    const k_phone  = document.getElementById("k_phone") 
+    const k_id  = document.getElementById("k_id") 
+    const datepp = document.getElementById("dateout") 
+    
     function bindvalue(index){
             $.ajax({
                 type: "get",
@@ -247,7 +277,16 @@
                 
                 success: function(data) {
                     console.log(data)
-                 
+                    k_name.value =data.hoVaTen
+                    k_birth.value =data.ngaySinh
+                    // k_datein.value=data.
+                    // k_dateout.value=data.
+                    // datepp.value=data.
+                    k_email.value  = data.email
+                    k_phone.value  = data.sdt
+                    k_id.value = data.id
+                    k_pp.value =data.soPassport
+                    k_qt.value=data.tenQuocTich
                 },error:function(message){
                     console.log(message)
                     alert(message.responseJSON.message)
@@ -255,6 +294,27 @@
                 }
             })
         }
+
+//         $.ajax({
+//         type: "get",
+//         url: "http://localhost:8080/api/foreigner/"+this.value+"/all",
+//         headers:{"Authorization": 'Bearer '+token },
+        
+//         success: function(data) {
+//             console.log(data)
+//           var data_show = data.content
+//             var list_kshow = document.getElementById("list_kshow")
+          
+//          }
+          
+
+//         },error:function(message){
+//             console.log(message)
+//             alert(message?.responseJSON?.message||"có lỗi sảy ra")
+           
+//         }
+// })
     </script>
+    
 </body>
 </html>

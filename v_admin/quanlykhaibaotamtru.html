@@ -198,7 +198,7 @@
                     <button>Xóa</button>
                     <button>Khóa</button>
                 </div>
-                <div class="listuser">
+                <div class="listuser" id="show_us">
                     <div class="render">
                         <h4>Danh sách người nước ngoài tạm trú</h4>
                         <button>In danh sách</button>
@@ -206,41 +206,14 @@
                     <div class="head table">
                         <div class="data">Họ và tên</div>
 
-                        <div class="data">Loại giấy phép</div>
-                        <div class="data">Ngày cấp</div>
-                        <div class="data">Ngày hết hạn</div>
-                        <div class="data">Mục đích cấp phép</div>
-                        <div class="data">Cơ sở khai báo</div>
+                        <div class="data">Email</div>
+                        <div class="data">Ngày Đến</div>
+                        <div class="data">Ngày sinh</div>
+                        <div class="data">số điện thoại</div>
+                        <div class="data">Số passport</div>
                         <div class="data">Trạng thái</div>
                     </div>
-                    <div class="roww table">
-                        <div class="data">123123</div>
-                        <div class="data">123123</div>
-                        <div class="data">123123</div>
-                        <div class="data">1231ádasdass asdasd adasdádasdasasasd23</div>
-                        <div class="data">2131ádasasdasdádasdsaasd23</div>
-                        <div class="data">123123</div>
-                        <div class="data">12312312</div>
-                        
-                    </div>
-                    <div class="roww table">
-                        <div class="data">123123</div>
-                        <div class="data">123123</div>
-                        <div class="data">123123</div>
-                        <div class="data">1231ádasdassadasdádasdasasasd23</div>
-                        <div class="data">2131ádasasdasdádasdsaasd23</div>
-                        <div class="data">123123</div>
-                        <div class="data">12312312</div>
-                    </div>
-                    <div class="roww table">
-                        <div class="data">123123</div>
-                        <div class="data">123123</div>
-                        <div class="data">123123</div>
-                        <div class="data">1231ádasdassadasdádasdasasasd23</div>
-                        <div class="data">2131ádasasdasdádasdsaasd23</div>
-                        <div class="data">123123</div>
-                        <div class="data">12312312</div>
-                    </div>
+                
                 </div>
             </form>
         </div>
@@ -286,6 +259,7 @@
         }
     </script>
     <script>
+        const show_us = document.getElementById("show_us")
         async function getvalue(){
             return new Promise((resolve, reject) => {
                 $.ajax({
@@ -295,7 +269,18 @@
                 
                 success: function(data) {
                     console.log(data)
-                   
+                    var showus = data.content
+                   for(i=0;i<showus.length;i++){
+                    show_us.innerHTML +=` <div class="roww table">
+                        <div class="data">${showus[i].nguoiNuocNgoai.hoVaTen}</div>
+                        <div class="data">${showus[i].nguoiNuocNgoai.email}</div>
+                        <div class="data">${showus[i].ngayDen}</div>
+                        <div class="data">${showus[i].nguoiNuocNgoai.ngaySinh}</div>
+                        <div class="data">${showus[i].nguoiNuocNgoai.sdt}</div>
+                        <div class="data">${showus[i].nguoiNuocNgoai.soPassport}</div>
+                        <div class="data">${showus[i].trangThai}</div>
+                    </div>`
+                   }
                    resolve()
 
                 },error:function(message){

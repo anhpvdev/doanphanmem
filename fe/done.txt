@@ -1,6 +1,0 @@
-đăng ký user
-đăng nhập user/admin
-cập nhật thông tin tài khoản
-đổi mật khẩu
-thêm-sửa-xóa cơ sở lưu trú
-khóa - xóa user (admin)
