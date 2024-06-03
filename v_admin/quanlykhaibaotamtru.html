@@ -94,12 +94,12 @@
 
     <div class="nav">
         <div class="menu">
-            <div class="item">Tổng quan</div>
+            <!-- <div class="item">Tổng quan</div>
             <div class="item">Quản lý tài khoản</div>
             <div class="item">Xử lý yêu cầu</div>
             <div class="item"> văn bản hướng dẫn</div>
             <div class="item">Quản lý vi phạm</div>
-            <div class="item">Quản lý khai báo</div>
+            <div class="item">Quản lý khai báo</div> -->
         </div>
 
         
@@ -210,6 +210,7 @@
                 <div class="listuser" id="show_us">
                     <div class="render">
                         <h4>Danh sách người nước ngoài tạm trú</h4>
+                        <button onclick="k_loc()" style="margin-right: 20px;">lọc</button>
                         <button>In danh sách</button>
                     </div>
                     <div class="head table">
@@ -248,8 +249,10 @@
             </div>
         </div>
     </div>
+
     <script src="../fe/js/admin.js"></script>
-    <script src="../fe/js/user.js"></script>
+    <!-- <script src="../fe/js/user.js"></script> -->
+
     <script>
         
         const check_true = document.getElementById("check_true")
@@ -276,7 +279,7 @@
             return new Promise((resolve, reject) => {
                 $.ajax({
                 type: "get",
-                url: " http://localhost:8080/api/license/all",
+                url: " http://localhost:8080/api/license/all?pageSize=10",
                 headers:{"Authorization": 'Bearer '+ad_token },
                 
                 success: function(data) {
@@ -293,7 +296,7 @@
                         <div class="data">${showus[i].trangThai}</div>
                     </div>`
                    }
-                   resolve()
+                
 
                 },error:function(message){
                     console.log(message)
@@ -349,10 +352,60 @@
         // const cs_name = document.getElementById("cs_name") 
         // const cs_dc = document.getElementById("cs_dc") 
 
+       
+        function k_loc(){
+           
+            $.ajax({
+                type: "get",
+                url: " http://localhost:8080/api/license/all?pageSize=10",
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {
+                    console.log(data)
+                    var showus = data.content
+                     
+                    show_us.innerHTML = `<div class="render">
+                        <h4>Danh sách người nước ngoài tạm trú</h4>
+                        <button onclick="k_loc()">lọc</button>
+                        <button>In danh sách</button>
+                    </div>
+                    <div class="head table">
+                        <div class="data">Họ và tên</div>
+
+                        <div class="data">Email</div>
+                        <div class="data">Ngày Đến</div>
+                        <div class="data">Ngày sinh</div>
+                        <div class="data">số điện thoại</div>
+                        <div class="data">Số passport</div>
+                        <div class="data">Trạng thái</div>
+                    </div>`
+                   for(i=0;i<showus.length;i++){
+                   if(showus[i].trangThai=="Đang chờ duyệt"){
+                    show_us.innerHTML +=` <div class="roww table"  onclick="bindvalue('${showus[i].idGiayPhep}')">
+                        <div class="data">${showus[i].nguoiNuocNgoai.hoVaTen}</div>
+                        <div class="data">${showus[i].nguoiNuocNgoai.email}</div>
+                        <div class="data">${showus[i].ngayDen}</div>
+                        <div class="data">${showus[i].nguoiNuocNgoai.ngaySinh}</div>
+                        <div class="data">${showus[i].nguoiNuocNgoai.sdt}</div>
+                        <div class="data">${showus[i].nguoiNuocNgoai.soPassport}</div>
+                        <div class="data">${showus[i].trangThai}</div>
+                    </div>`
+                   }
+                   }
+                   resolve()
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                }
+            })
+        }
+
         function bindvalue(index){
             $.ajax({
                 type: "get",
-                url: " http://localhost:8080/api/license/all",
+                url: " http://localhost:8080/api/license/all?pageSize=15",
                 headers:{"Authorization": 'Bearer '+ad_token },
                 
                 success: function(data) {
@@ -378,6 +431,7 @@
                         k_ld.value = showus[i].lyDoTamTru;
                         k_tt.value = showus[i].trangThai;
                         k_idverify.value = showus[i].idGiayPhep
+                        
                     }
 
                    }
@@ -457,5 +511,30 @@
             }
         }
     </script>
+    <!-- <script>
+        window.onload = function(){
+           setTimeout(
+                function(){
+                    $.ajax({
+                            type: "post",
+                            url: "http://localhost:8080/api/license/verification",
+                            headers:{"Authorization": 'Bearer '+ad_token },
+                            data:JSON.stringify(ex_data),
+                            contentType:'application/json',
+                            success: function(data) {
+                                console.log(data)
+                                alert("Đã xét duyệt yêu cầu")
+                                window.location.reload()
+
+                            },error:function(message){
+                                console.log(message)
+                                alert("có lỗi sảy ra")
+                                // window.location.href = "./dangnhap.html"
+                            }
+                        })
+                },
+            5000)
+        }
+    </script> -->
 </body>
 </html>

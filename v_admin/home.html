@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../fe/css/header-footer.css">
     <link rel="stylesheet" href="../fe/css/update.css">
     <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
-
+    <script src="../fe/js/jquery.js"></script>
 </head>
 <body>
     <div class="header grid">
@@ -61,13 +61,13 @@
 
 
     <div class="nav">
-        <div class="menu">
-            <div class="item">Tổng quan</div>
+        <div class="menu" id="menu_bar">
+            <!-- <div class="item">Tổng quan</div>
             <div class="item"><a href="./quanlytaikhoan.html">Quản lý tài khoản</a></div>
             <div class="item"><a href="">Xử lý yêu cầu</a></div>
             <div class="item"><a href="./danhsachvanban.html">văn bản hướng dẫn</a></div>
             <div class="item"><a href="">Quản lý vi phạm</a></div>
-            <div class="item"><a href="./quanlykhaibaotamtru.html">Quản lý khai báo tạm trú</a></div>
+            <div class="item"><a href="./quanlykhaibaotamtru.html">Quản lý khai báo tạm trú</a></div> -->
         </div>
 
         
@@ -100,5 +100,31 @@
         </div>
     </div>
     <script src="../fe/js/admin.js"></script>
+    <script>
+        const menu_bar = document.getElementById('menu_bar')
+        $.ajax({
+            type: "get",
+            url: "http://localhost:8080/api/user",
+            headers:{"Authorization": 'Bearer '+ad_token },
+            
+            success: function(data) {
+                console.log(data)
+                if(data.vaiTro =="NhanVienQL"){
+                    
+                    menu_bar.innerHTML = `<div class="item">Tổng quan</div>
+
+                    <div class="item"><a href="./quanlykhaibaotamtru.html">Quản lý khai báo tạm trú</a></div>`
+                }else if( data.vaiTro=="QTV"){
+                    menu_bar.innerHTML = `<div class="item">Tổng quan</div>
+
+                    <div class="item"><a href="./quanlytaikhoan.html">Quản lý tài khoản</a></div>`
+                }
+            },error:function(message){
+                console.log(message)
+                alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                
+            }
+        })
+        </script>
 </body>
 </html>

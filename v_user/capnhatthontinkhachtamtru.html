@@ -78,6 +78,23 @@
                     <option value="0"></option>`
                 </select>
             </div>
+            <div class="box boxwide" style="border-bottom: 2px solid black;">
+                <div class="item" style="display: flex;">
+                    <label style="place-content: center; margin: 0px 10px;" for="">Tên</label> <input style="width: 35px;" type="checkbox" id="seach_pp"> 
+                    <label style="place-content: center; margin: 0px 10px;" for="">passport</label> <input style="width: 35px;" type="checkbox" id="seach_name">
+                </div>
+                <div class="item">
+                    <b>Thông tin:</b>
+                    <input type="text" id="seach_user_pp"> <button onclick="seachuser_pp()">seach</button>
+                </div>
+
+                <div class="item">
+                    <b>Ngày đến:</b>
+                    <input type="date" id="seach_user_date"> <button onclick="seachuser_date()">seach</button>
+                </div>
+  
+            </div>
+
             <div class="box boxwide">
                 <div class="item">
                     <b>Họ và tên:</b>
@@ -122,13 +139,14 @@
                 <div class="item">
                     <p>Tệp đính kèm:</p>
                     <input type="hidden" id="k_file">
+                    <input type="hidden" id="k_qtid">
                     <button id="show_k_file">Nhấp xem hoặc tải về</button>
                 </div>
             </div>
 
             <div class="action">
                 <!-- <button>Đăng ký mới</button> -->
-                <button>Cập nhật</button>
+                <button id="u_update">Cập nhật</button>
             </div>
             <div class="listuser"id="list_kshow">
                 <div class="render">
@@ -214,7 +232,7 @@
                 
                 success: function(data) {
                     console.log(data)
-                  var data_show = data.content
+                    var data_show = data.content
                     var list_kshow = document.getElementById("list_kshow")
                     list_kshow.innerHTML = ` <div class="render">
                     <h4>Danh sách người nước ngoài tạm trú</h4>
@@ -236,7 +254,7 @@
                     <div class="data">${data_show[i].hoVaTen}</div>
                     <div class="data">${data_show[i].ngaySinh}</div>
                     <div class="data">${data_show[i].ngayDen}</div>
-                    <div class="data">${data_show[i].ngayDiDuKien}</div>
+                    <div class="data">${data_show[i].ngayRoiKhoi}</div>
                     <div class="data">${data_show[i].soPassport}</div>
                     <div class="data">${data_show[i].tenQuocTich}</div>
                     <div class="data">${data_show[i].trangThaiGiayPhep}</div>
@@ -252,7 +270,7 @@
         })
         }
     })
-
+    const u_update = document.getElementById("u_update")
 
     const k_name = document.getElementById("k_name") 
 
@@ -268,6 +286,7 @@
     const k_email  = document.getElementById("k_email") 
     const k_phone  = document.getElementById("k_phone") 
     const k_id  = document.getElementById("k_id") 
+    const k_qtid = document.getElementById("k_qtid")
     const datepp = document.getElementById("dateout") 
     const show_k_file = document.getElementById("show_k_file") 
     // function bindvalue(index){
@@ -323,6 +342,13 @@
                         k_qt.value=listscan[i].tenQuocTich
                         k_file.value = listscan[i].tepDinhKemMoiNhat
                         show_k_file.innerHTML = listscan[i].tepDinhKemMoiNhat
+                        k_qtid.value = listscan[i].idQuocTich
+                        // if(listscan[i].trangThaiGiayPhep=="Đã duyệt"){
+                        //     u_update.style.display  = 'none'
+                        // }else{
+                        //     u_update.style.display  = 'block'
+                        // }
+
                     }
                 }
             
@@ -337,6 +363,7 @@
     }
 
     show_k_file.onclick = function(){
+        
         console.log(k_file.value)
         $.ajax({
             type: "get",
@@ -353,7 +380,113 @@
             }
         })
     }
+
+
+    u_update.onclick=function(){
+        let result = confirm( `Bạn muốn cập nhật thông tin?` );
+
+    if ( result ) {
+        var x_dateout = ""
+        if(k_dateout.value){
+            x_dateout = k_dateout.value + " 00:00"
+        }
+        
+        var formData = new FormData()
+
+                let requestData = {
+                        "idNguoiNuocNgoai":k_id.value,
+                        "hoVaTen":k_name.value,
+                        "soPassport":k_pp.value,
+                        "sdt": k_phone.value,
+                        "email": k_email.value,
+                        "ngaySinh": k_birth.value,
+                        "ngayDen":k_datein.value+" 00:00",
+                        "ngayDiDuKien":datepp.value+" 00:00",
+                        "lyDoTamTru": "test",
+                        "quocTichId": k_qtid.value,
+                        "idCoSo":list_cslt.value,
+                        "ngayRoiKhoi": x_dateout
+                };
+                console.log(requestData)
+
+                formData.append("nguoiNuocNgoaiUpdateRequest", new Blob([JSON.stringify(requestData)], { type: "application/json" }));
+                
+                var settings = {
+                    "url": "http://localhost:8080/api/foreigner",
+                    "method": "PUT",
+                    "timeout": 0,
+                    "headers": {
+                        "Authorization": "Bearer "+token
+                    },
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": formData
+                };
+                // $.ajax(settings).done(function (response) {
+                //     console.log(response);
+                //     alert("Thêm thành công")
+                //     // window.location.reload()
+                // });
+                $.ajax({
+                    "url": "http://localhost:8080/api/foreigner",
+                    "method": "PUT",
+                    "timeout": 0,
+                    "headers": {
+                        "Authorization": "Bearer "+token
+                    },
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": formData,
+                    contentType:'application/json',
+                    success: function(data) {          
+                        // console.log(data)
+                       alert("Cập nhật thành công")
+                    //    window.location.reload()
+                    },error:function(message){
+                        // console.log(message)
+                        alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                    }
+                })
+
+            } 
+    }
     </script>
-    
+    <script>
+        const seach_pp = document.getElementById("seach_pp")
+        const seach_name = document.getElementById("seach_name")
+
+
+        function seachuser_pp(){
+            var seach_value = document.getElementById("seach_user_pp").value
+            if(seach_pp.checked){
+                alert("name:"+seach_value)
+            }else{
+                alert("pass:"+seach_value)
+            }
+            
+        }
+
+        function seachuser_date(){
+            var seach_value = document.getElementById("seach_user_date").value
+            alert(seach_value)
+        }
+
+
+
+        seach_name.onclick = function(){
+            if(seach_name.checked){
+                seach_pp .checked = false
+            }
+        }
+
+        seach_pp.onclick = function(){
+            if(seach_pp.checked){
+                seach_name .checked = false
+            }
+        }
+    </script>
 </body>
 </html>

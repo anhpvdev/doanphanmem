@@ -214,36 +214,48 @@
                         "quocTichId": quoctich.value
                 };
                 console.log(requestData)
-                // let requestData = {
-                //     "hoVaTen": "nahsaudi",
-                //     "soPassport": "979889877",
-                //     "sdt": "0957781222",
-                //     "email": "tom2andjerry4@gmail.com",
-                //     "ngaySinh": "1991-07-06",
-                //     "ngayDen": "2024-05-16 09:50",
-                //     "ngayDiDuKien": "2024-06-01 09:50",
-                //     "lyDoTamTru": "Đi du lịch",
-                //     "quocTichId": "US"
-                // };
                 formData.append("request", new Blob([JSON.stringify(requestData)], { type: "application/json" }));
                 
-                var settings = {
+                // var settings = {
+                //     "url": "http://localhost:8080/api/foreigner/"+list_cslt.value,
+                //     "method": "POST",
+                //     "timeout": 0,
+                //     "headers": {
+                //         "Authorization": "Bearer "+token
+                //     },
+                //     "processData": false,
+                //     "mimeType": "multipart/form-data",
+                //     "contentType": false,
+                //     "data": formData
+                // };
+
+                // $.ajax(settings).done(function (response) {
+                //     console.log(response);
+                //     alert("Thêm thành công")
+                //     window.location.reload()
+                // });
+
+                $.ajax({
                     "url": "http://localhost:8080/api/foreigner/"+list_cslt.value,
                     "method": "POST",
                     "timeout": 0,
                     "headers": {
-                        "Authorization": "Bearer "+token
-                    },
+                            "Authorization": "Bearer "+token
+                        },
                     "processData": false,
                     "mimeType": "multipart/form-data",
                     "contentType": false,
-                    "data": formData
-                };
-
-                $.ajax(settings).done(function (response) {
-                    console.log(response);
-                    window.location.reload()
-                });
+                    "data": formData,
+                    success: function(data) {
+                        console.log(data)
+                        alert("Thêm thành công")
+                        window.location.reload()
+                    },error:function(message){
+                        console.log(message)
+                        alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                    }
+                })
             });
         });
     </script>
