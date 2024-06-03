@@ -128,7 +128,7 @@
                 </div>
                 <div class="listuser" id="list_user">
                     <div class="render">
-                        <h4>Danh sách người nước ngoài tạm trú</h4>
+                        <h4>Danh sách tài khoản</h4>
                         <button>In danh sách</button>
                     </div>
                     <div class="head table">
@@ -196,7 +196,7 @@
 
             $.ajax({
                 type: "get",
-                url: "http://localhost:8080/api/admin/account/all?pageSize=15",
+                url: "http://localhost:8080/api/admin/account/all?pageSize=100",
                 headers:{"Authorization": 'Bearer '+ad_token },
                 
                 success: function(data) {
