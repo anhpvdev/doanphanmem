@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../fe/css/header-footer.css">
     <link rel="stylesheet" href="../fe/css/update.css">
     <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
+    <link rel="stylesheet" href="../fe/css/menu.css">
     <script src="../fe/js/jquery.js"></script>
 </head>
 <body>
@@ -100,31 +101,20 @@
         </div>
     </div>
     <script src="../fe/js/admin.js"></script>
+    
     <script>
-        const menu_bar = document.getElementById('menu_bar')
-        $.ajax({
-            type: "get",
-            url: "http://localhost:8080/api/user",
-            headers:{"Authorization": 'Bearer '+ad_token },
-            
-            success: function(data) {
-                console.log(data)
-                if(data.vaiTro =="NhanVienQL"){
-                    
-                    menu_bar.innerHTML = `<div class="item">Tổng quan</div>
-
-                    <div class="item"><a href="./quanlykhaibaotamtru.html">Quản lý khai báo tạm trú</a></div>`
-                }else if( data.vaiTro=="QTV"){
-                    menu_bar.innerHTML = `<div class="item">Tổng quan</div>
-
-                    <div class="item"><a href="./quanlytaikhoan.html">Quản lý tài khoản</a></div>`
-                }
-            },error:function(message){
-                console.log(message)
-                alert(message?.responseJSON?.message||"có lỗi sảy ra")
-                
-            }
-        })
-        </script>
+      
+      setTimeout(function(){
+        const a_logout = document.getElementById("a_logout")
+        a_logout.onclick = function(){
+            alert("logout")
+            localStorage.setItem("ad_accessToken","")
+            localStorage.setItem("ad_email","")
+            localStorage.setItem("ad_id","")
+            localStorage.setItem("ad_refreshToken","")
+            location.href ="http://127.0.0.1:5501/v_admin/dangnhap.html"
+        }
+      },1000)
+    </script>
 </body>
 </html>

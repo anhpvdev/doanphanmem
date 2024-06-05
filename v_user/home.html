@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../fe/css/header-footer.css">
     <link rel="stylesheet" href="../fe/css/update.css">
     <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
-
+    <link rel="stylesheet" href="../fe/css/menu.css">
+    <script src="../fe/js/jquery.js"></script>
 </head>
 <body>
     <div class="header grid">
@@ -68,6 +69,7 @@
             <div class="item"><a href="./dangkykhachtamtru.html">Đăng ký khách tạm trú</a></div>
             
             <div class="item"><a href="./guiyeucauhotro.html">Gửi yêu cầu hỗ trợ</a></div>
+            <div class="item"><a href="#" id="logout">Đăng Xuất</a></div>
             <!-- <div class="item">Quản lý khai báo</div> -->
         </div>
 
@@ -98,5 +100,15 @@
         </div>
     </div>
     <script src="../fe/js/user.js"></script>
+    <script>
+        const logout = document.getElementById("logout")
+        logout.onclick = function(){
+            localStorage.setItem("accessToken","")
+            localStorage.setItem("email","")
+            localStorage.setItem("id","")
+            localStorage.setItem("refreshToken","")
+            location.href ="http://127.0.0.1:5501/v_user/dangnhap.html"
+        }
+    </script>
 </body>
 </html>

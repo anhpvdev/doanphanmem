@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fe/css/grid.css">
+    <link rel="stylesheet" href="../fe/css/header-footer.css">
+    <link rel="stylesheet" href="../fe/css/update.css">
+    <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
+    <script src="../fe/js/jquery.js"></script>
+
+    <style>
+        .roww.table{
+            padding: 2px 0px;
+        }
+
+        .roww.table div{
+            padding: 2px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header grid">
+        <div class="container gridhead wide">
+            <div class="item">
+                <div class="logo">
+                    <a href=""><img src="../fe/image/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">TRANG CHỦ</a>
+            </div>
+            <div class="item">
+                <a href="">GIỚI THIỆU</a>
+            </div>
+            <div class="item">
+                <a href="">THỦ TỤC</a>
+            </div>
+            <div class="item">
+                <a href="">QUY ĐỊNH</a>
+            </div>
+            <div class="item">
+                <a href="">HỖ TRỢ</a>
+            </div>
+            <div class="item">
+                <a href="">THÔNG TIN</a>
+            </div>
+            <div class="item">
+                <a href="">TIN TỨC</a>
+            </div>
+            <div class="item">
+                <a href="">LIÊN HỆ</a>
+            </div>
+            <div class="item seach">
+               <input type="text">
+            </div>
+            <div class="item user"  id="user_show">
+                <a href="">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="nav">
+        <div class="menu" id="menu_bar">
+            <!-- <div class="item">Tổng quan</div>
+            <div class="item">Quản lý tài khoản</div>
+            <div class="item">Xử lý yêu cầu</div>
+            <div class="item"> văn bản hướng dẫn</div>
+            <div class="item">Quản lý vi phạm</div>
+            <div class="item">Quản lý khai báo</div> -->
+        </div>
+
+        
+        <div class="main grid">
+            <div class="router grid wide">
+                <a href="">QUẢN LÝ TÀI KHOẢN</a>
+            </div>
+            <div class="container grid wide updateuser">
+                <div class="box boxwide">
+                    <div class="item">
+                        <b>Email:</b>
+                    <input type="text" id="ac_email"> 
+                    </div>
+                    <div class="item">
+                        <b>Họ và tên:</b>
+                    <input type="text" id="ac_name"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày sinh:</b>
+                        <input type="date" id="ac_birth"> 
+                    </div>
+                    <div class="item">
+                        <b>CCCD:</b>
+                    <input type="text" id="ac_cccd"> 
+                    </div>
+                    <div class="item">
+                        <b>Số điện thoại:</b>
+                    <input type="text" id="ac_sdt"> 
+                    </div>
+                    <div class="item">
+                        <b>Trạng thái:</b>
+                    <input type="text" id="ac_status"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày tạo:</b>
+                        <input type="text" id="ac_date"> 
+                    </div>
+                    <div class="item">
+                        <b>ID Đăng ký:</b>
+                        <input type="text" id="ac_id" readonly="readonly"> 
+                    </div>
+                </div>
+                <div class="action">
+                    <!-- <button id="btn_update">Sửa</button> -->
+                    <button id="btn_delete">Xóa</button>
+                    <button id="btn_ban">Khóa</button>
+                    <button id="btn_unban">Mở Khóa</button>
+                </div>
+                <div class="listuser" id="list_user">
+                    <div class="render">
+                        <h4>Danh sách tài khoản</h4>
+                        <button>In danh sách</button>
+                    </div>
+                    <div class="head table">
+                        <div class="stt">STT</div>
+                        <div class="data">Họ và tên</div>
+                        <div class="data">Ngày sinh</div>
+                        <div class="data">Email</div>
+                        <div class="data">Số điện thoại</div>
+                        <div class="data">CCCD</div>
+                        <div class="data">Trạng thái</div>
+                    </div>
+                   
+                    <!-- <div class="roww table">
+                        <div class="stt">1</div>
+                        <div class="data">123123</div>
+                        <div class="data">123123</div>
+                        <div class="data">1231ádasdassadasdádasdasasasd23</div>
+                        <div class="data">2131ádasasdasdádasdsaasd23</div>
+                        <div class="data">123123</div>
+                        <div class="data">12312312</div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="footer grid">
+        <div class="container gridfoot" >
+            <div class="logo">
+                <img src="../fe/image/logo.png" alt="">
+            </div>
+            <div class="info">
+                <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
+                <p><b>Giấy phép:</b> 612/GP-STTTT cấp ngày 21 tháng 10 năm 2016.</p>
+                <p><b>Trưởng Ban biên tập:</b> Trần Chí Cường, Phó Chủ tịch UBND thành phố.</p>
+                <p><b>Trụ sở:</b> 24 Trần Phú, P.Thạch Thang, Q. Hải Châu, TP. Đà Nẵng.</p>
+                <p><b>Điện thoại:</b> (+84.236) 3.817.366 </p>
+                <p><b>Email:</b> toasoan@danang.gov.vn</p>
+
+            </div>
+        </div>
+    </div>
+    <script src="../fe/js/admin.js"></script>
+
+    <script>
+        const ac_email =document.getElementById("ac_email")
+        const ac_name =document.getElementById("ac_name")
+        const ac_sdt =document.getElementById("ac_sdt")
+        const ac_status =document.getElementById("ac_status")
+        const ac_date =document.getElementById("ac_date")
+        const ac_birth =document.getElementById("ac_birth")
+        const ac_cccd =document.getElementById("ac_cccd")
+        const ac_id = document.getElementById("ac_id")
+        const show_user = document.getElementById("list_user")
+
+        
+        const btn_delete = document.getElementById("btn_delete")
+        const btn_ban = document.getElementById("btn_ban")
+        const btn_unban = document.getElementById("btn_unban")
+        function getvalue(){
+
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/admin/account/all?pageSize=100",
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {
+                    console.log(data)
+                    let listur = data.content
+                    for(let i=0;i<listur.length;i++){
+                        if(listur[i].vaiTro =="ChuCS"){
+                        show_user.innerHTML += ` <div class="roww table" onclick="bindvalue('${listur[i].id}')">
+                        <div class="stt">${i+1}</div>
+                        <div class="data">${listur[i].hoVaTen}</div>
+                        <div class="data">${listur[i].ngaySinh}</div>
+                        <div class="data">${listur[i].email}</div>
+                        <div class="data">${listur[i].sdt}</div>
+                        <div class="data">${listur[i].cccd}</div>
+                        <div class="data">${listur[i].trangThai}</div>
+                    </div>`
+                }
+                    }
+                  
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    // window.location.href = "./dangnhap.html"
+                }
+            })
+        }
+
+        getvalue()
+
+        function bindvalue(index){
+            console.log(index)
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/admin/account/details/"+index,
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {
+                    console.log(data)
+                    ac_email.value = data.email                
+                    ac_name.value = data.hoVaTen                   
+                    ac_sdt.value = data.sdt                  
+                    ac_status.value = data.trangThai
+                    ac_date.value = data.ngayTao               
+                    ac_birth.value = data.ngaySinh                    
+                    ac_cccd.value = data.cccd
+                    ac_id.value = data.id                
+                },error:function(message){
+                    console.log(message)
+                    alert(message.responseJSON.message)
+                  
+                }
+            })
+        }
+
+        btn_delete.onclick = function(){
+            if(!ac_id.value)alert("Vui lòng chọn tài khoản cần xóa")
+            else{
+                let result = confirm( `Bạn muốn xóa người dùng ${ac_email.value}?` );
+
+                if ( result ) {
+                   
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/api/admin/account/"+ac_id.value,
+                        headers:{"Authorization": 'Bearer '+ad_token },
+                        success: function(data) {
+                            console.log(data)
+                            alert("Đã xóa người dùng")
+                            window.location.reload()
+
+                        },error:function(message){
+                            console.log(message)
+                            alert("có lỗi sảy ra")
+                            // window.location.href = "./dangnhap.html"
+                        }
+                    })
+                }
+            }
+        }
+
+        btn_ban.onclick = function(){
+            if(!ac_id.value)alert("Vui lòng chọn tài khoản cần khóa")
+            else{
+                let result = confirm( `Bạn muốn khóa người dùng ${ac_email.value}?` );
+
+                if ( result ) {
+                   
+                    $.ajax({
+                        type: "PUT",
+                        url: "http://localhost:8080/api/admin/account/ban/"+ac_id.value,
+                        headers:{"Authorization": 'Bearer '+ad_token },
+                        success: function(data) {
+                            console.log(data)
+                            alert("Đã cấm người dùng")
+                            window.location.reload()
+
+                        },error:function(message){
+                            console.log(message)
+                            alert("có lỗi sảy ra")
+                            // window.location.href = "./dangnhap.html"
+                        }
+                    })
+                }
+            }
+        }
+
+        btn_unban.onclick = function(){
+            if(!ac_id.value)alert("Vui lòng chọn tài khoản cần khóa")
+            else{
+                let result = confirm( `Bạn muốn mở khóa người dùng ${ac_email.value}?` );
+
+                if ( result ) {
+                   
+                    $.ajax({
+                        type: "PUT",
+                        url: "http://localhost:8080/api/admin/account/unban/"+ac_id.value,
+                        headers:{"Authorization": 'Bearer '+ad_token },
+                        success: function(data) {
+                            console.log(data)
+                            alert("Đã mở khóa người dùng")
+                            window.location.reload()
+
+                        },error:function(message){
+                            console.log(message)
+                            alert("có lỗi sảy ra")
+                            // window.location.href = "./dangnhap.html"
+                        }
+                    })
+                }
+            }
+        }
+    </script>
+      <script>
+      
+        setTimeout(function(){
+          const a_logout = document.getElementById("a_logout")
+          a_logout.onclick = function(){
+              alert("logout")
+              localStorage.setItem("ad_accessToken","")
+              localStorage.setItem("ad_email","")
+              localStorage.setItem("ad_id","")
+              localStorage.setItem("ad_refreshToken","")
+              location.href ="http://127.0.0.1:5501/v_admin/dangnhap.html"
+          }
+        },1000)
+      </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fe/css/grid.css">
+    <link rel="stylesheet" href="../fe/css/header-footer.css">
+    <link rel="stylesheet" href="../fe/css/registry.css">
+    <link rel="stylesheet" href="../fe/css/update.css">
+    <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
+    <script src="../fe/js/jquery.js"></script>
+    <style>
+        .box-checked{
+            width: 230px;
+            margin: 20px 35px;
+        }
+        .checked-tamtru{
+            display: flex;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .checked-tamtru input{
+            width:30px;
+            height: 30px;
+        }
+        .checked-tamtru label{
+            place-content: center;
+            padding-left: 20px;
+        }
+
+        .sumit_tamtru:hover{
+            background-color: #80f780;
+        }
+
+        .item button{
+            height: 30px;
+            margin: 10px;
+            width: 240px;
+            border-radius: 5px;
+            background-color: #ffb4b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header grid">
+        <div class="container gridhead wide">
+            <div class="item">
+                <div class="logo">
+                    <a href=""><img src="./image/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">TRANG CHỦ</a>
+            </div>
+            <div class="item">
+                <a href="">GIỚI THIỆU</a>
+            </div>
+            <div class="item">
+                <a href="">THỦ TỤC</a>
+            </div>
+            <div class="item">
+                <a href="">QUY ĐỊNH</a>
+            </div>
+            <div class="item">
+                <a href="">HỖ TRỢ</a>
+            </div>
+            <div class="item">
+                <a href="">THÔNG TIN</a>
+            </div>
+            <div class="item">
+                <a href="">TIN TỨC</a>
+            </div>
+            <div class="item">
+                <a href="">LIÊN HỆ</a>
+            </div>
+            <div class="item seach">
+               <input type="text">
+            </div>
+            <div class="item user" id="user_show">
+                <a href="">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="nav">
+        <div class="menu" id="menu_bar">
+            <!-- <div class="item">Tổng quan</div>
+            <div class="item">Quản lý tài khoản</div>
+            <div class="item">Xử lý yêu cầu</div>
+            <div class="item"> văn bản hướng dẫn</div>
+            <div class="item">Quản lý vi phạm</div>
+            <div class="item">Quản lý khai báo</div> -->
+        </div>
+
+        
+       
+    <div class="main grid">
+        <div class="router grid wide">
+            <a href="">Thêm tài khoản quản lý</a>
+        </div>
+        <div class="container registry">
+            <h3>THÔNG TIN TÀI KHOẢN</h3>
+            <div class="box boxwide">
+                <div class="col">
+                   
+                    <div class="item">
+                        <p>Email(*):</p>
+                        <input type="text" id="a_email">
+                    </div>
+                    <div class="item">
+                        <p>Số điện thoại (*):</p>
+                        <input type="text" id="a_phone">
+                    </div>
+                
+                    <div class="item">
+                        <p>Mật Khẩu (*):</p>
+                        <input type="text" id="a_pass">
+                    </div>
+                    <div class="item">
+                        <p>Nhập lại mật khẩu(*):</p>
+                        <input type="text" id="a_repass">
+                    </div>
+                  
+                </div>
+                <div class="col">
+                    <div class="item">
+                        <p>Họ tên (*):</p>
+                        <div class="dropbox">
+                            <input type="text" id="a_name">
+                        </div>
+                    </div>
+                   
+                    <div class="item">
+                        <p>CCCD:</p>
+                        <input type="text" id="a_cccd">
+                    </div>
+                    <div class="item">
+                        <p>Ngày sinh (*):</p>
+                        <input type="date" id="a_date">
+                    </div>
+                    <div class="item">
+                        <p>Vai trò (*):</p>
+                        <div class="dropbox">
+                            <select name="phuongxa" id="a_role">
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="MANAGER">MANAGER</option>
+                            </select>
+                           
+                       
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="regis">
+                <button id="add_admin">Đăng Ký</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+    <div class="footer grid">
+        <div class="container gridfoot" >
+            <div class="logo">
+                <img src="./image/logo.png" alt="">
+            </div>
+            <div class="info">
+                <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
+                <p><b>Giấy phép:</b> 612/GP-STTTT cấp ngày 21 tháng 10 năm 2016.</p>
+                <p><b>Trưởng Ban biên tập:</b> Trần Chí Cường, Phó Chủ tịch UBND thành phố.</p>
+                <p><b>Trụ sở:</b> 24 Trần Phú, P.Thạch Thang, Q. Hải Châu, TP. Đà Nẵng.</p>
+                <p><b>Điện thoại:</b> (+84.236) 3.817.366 </p>
+                <p><b>Email:</b> toasoan@danang.gov.vn</p>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../fe/js/admin.js"></script>
+    <!-- <script src="../fe/js/user.js"></script> -->
+    <script>
+        const a_email = document.getElementById("a_email")
+        const a_phone = document.getElementById("a_phone")
+        const a_pass = document.getElementById("a_pass")
+        const a_repass = document.getElementById("a_repass")
+
+        const a_name = document.getElementById("a_name")
+        const a_cccd = document.getElementById("a_cccd")
+        const a_date = document.getElementById("a_date")
+        const a_role = document.getElementById("a_role")
+
+        const add_admin = document.getElementById("add_admin")
+
+        add_admin.onclick = function(){
+            if(!a_email.value || !a_phone.value || !a_pass.value || !a_repass.value || !a_name.value || !a_cccd.value || !a_date.value || !a_role.value){
+                alert("vui lòng nhập đủ các thông tin")
+            }else{
+                if(a_repass.value != a_pass.value){
+                    alert("mật khẩu xác nhận không đúng")
+                }else{
+
+                    var admin_data = {
+                        "email":a_email.value,
+                        "sdt":a_phone.value,
+                        "matKhau":a_pass.value,
+                        "hoVaTen":a_name.value,
+                        "cccd":a_cccd.value,
+                        "ngaySinh":a_date.value,
+                        "idVaiTro": a_role.value
+                    }
+                    console.log(admin_data)
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:8080/api/admin/account",
+                        headers:{"Authorization": 'Bearer '+ad_token },
+                        data:JSON.stringify(admin_data),
+                        contentType:'application/json',
+                        success: function(data) {
+                            alert(data)
+                            location.reload()
+                           
+
+                        },error:function(message){
+                            console.log(message)
+                            alert("có lỗi sảy ra, có thể thông tin bạn nhập đã trùng với một tài khoản admin nào đó")
+                        
+                        }
+                    })
+                }
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+   <script>
+      
+    setTimeout(function(){
+      const a_logout = document.getElementById("a_logout")
+      a_logout.onclick = function(){
+          alert("logout")
+          localStorage.setItem("ad_accessToken","")
+          localStorage.setItem("ad_email","")
+          localStorage.setItem("ad_id","")
+          localStorage.setItem("ad_refreshToken","")
+          location.href ="http://127.0.0.1:5501/v_admin/dangnhap.html"
+      }
+    },1000)
+  </script>
+  
+</body>
+</html>

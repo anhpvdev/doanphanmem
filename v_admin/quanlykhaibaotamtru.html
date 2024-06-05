@@ -78,7 +78,7 @@
             <div class="item seach">
                <input type="text">
             </div>
-            <div class="item user">
+            <div class="item user" id="user_show">
                 <a href="">ĐĂNG NHẬP</a>
             </div>
         </div>
@@ -93,7 +93,7 @@
 
 
     <div class="nav">
-        <div class="menu">
+        <div class="menu" id="menu_bar">
             <!-- <div class="item">Tổng quan</div>
             <div class="item">Quản lý tài khoản</div>
             <div class="item">Xử lý yêu cầu</div>
@@ -511,30 +511,19 @@
             }
         }
     </script>
-    <!-- <script>
-        window.onload = function(){
-           setTimeout(
-                function(){
-                    $.ajax({
-                            type: "post",
-                            url: "http://localhost:8080/api/license/verification",
-                            headers:{"Authorization": 'Bearer '+ad_token },
-                            data:JSON.stringify(ex_data),
-                            contentType:'application/json',
-                            success: function(data) {
-                                console.log(data)
-                                alert("Đã xét duyệt yêu cầu")
-                                window.location.reload()
-
-                            },error:function(message){
-                                console.log(message)
-                                alert("có lỗi sảy ra")
-                                // window.location.href = "./dangnhap.html"
-                            }
-                        })
-                },
-            5000)
-        }
-    </script> -->
+    <script>
+      
+        setTimeout(function(){
+          const a_logout = document.getElementById("a_logout")
+          a_logout.onclick = function(){
+              alert("logout")
+              localStorage.setItem("ad_accessToken","")
+              localStorage.setItem("ad_email","")
+              localStorage.setItem("ad_id","")
+              localStorage.setItem("ad_refreshToken","")
+              location.href ="http://127.0.0.1:5501/v_admin/dangnhap.html"
+          }
+        },1000)
+      </script>
 </body>
 </html>

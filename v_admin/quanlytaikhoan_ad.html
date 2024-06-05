@@ -71,7 +71,7 @@
 
 
     <div class="nav">
-        <div class="menu">
+        <div class="menu" id="menu_bar">
             <!-- <div class="item">Tổng quan</div>
             <div class="item">Quản lý tài khoản</div>
             <div class="item">Xử lý yêu cầu</div>
@@ -112,8 +112,8 @@
                     <input type="text" id="ac_status"> 
                     </div>
                     <div class="item">
-                        <b>Ngày tạo:</b>
-                        <input type="text" id="ac_date"> 
+                        <b>Chức vụ:</b>
+                        <input type="text" id="ac_role"> 
                     </div>
                     <div class="item">
                         <b>ID Đăng ký:</b>
@@ -133,8 +133,8 @@
                     </div>
                     <div class="head table">
                         <div class="stt">STT</div>
+                        <div class="data">Chức vụ</div>
                         <div class="data">Họ và tên</div>
-                        <div class="data">Ngày sinh</div>
                         <div class="data">Email</div>
                         <div class="data">Số điện thoại</div>
                         <div class="data">CCCD</div>
@@ -182,7 +182,7 @@
         const ac_name =document.getElementById("ac_name")
         const ac_sdt =document.getElementById("ac_sdt")
         const ac_status =document.getElementById("ac_status")
-        const ac_date =document.getElementById("ac_date")
+        const ac_role =document.getElementById("ac_role")
         const ac_birth =document.getElementById("ac_birth")
         const ac_cccd =document.getElementById("ac_cccd")
         const ac_id = document.getElementById("ac_id")
@@ -203,11 +203,11 @@
                     console.log(data)
                     let listur = data.content
                     for(let i=0;i<listur.length;i++){
-                        if(listur[i].vaiTro =="ChuCS"){
+                        if(listur[i].vaiTro !="ChuCS"){
                         show_user.innerHTML += ` <div class="roww table" onclick="bindvalue('${listur[i].id}')">
                         <div class="stt">${i+1}</div>
+                        <div class="data">${listur[i].vaiTro}</div>
                         <div class="data">${listur[i].hoVaTen}</div>
-                        <div class="data">${listur[i].ngaySinh}</div>
                         <div class="data">${listur[i].email}</div>
                         <div class="data">${listur[i].sdt}</div>
                         <div class="data">${listur[i].cccd}</div>
@@ -240,7 +240,7 @@
                     ac_name.value = data.hoVaTen                   
                     ac_sdt.value = data.sdt                  
                     ac_status.value = data.trangThai
-                    ac_date.value = data.ngayTao               
+                    ac_role.value = data.vaiTro               
                     ac_birth.value = data.ngaySinh                    
                     ac_cccd.value = data.cccd
                     ac_id.value = data.id                
@@ -330,5 +330,19 @@
             }
         }
     </script>
+      <script>
+      
+        setTimeout(function(){
+          const a_logout = document.getElementById("a_logout")
+          a_logout.onclick = function(){
+              alert("logout")
+              localStorage.setItem("ad_accessToken","")
+              localStorage.setItem("ad_email","")
+              localStorage.setItem("ad_id","")
+              localStorage.setItem("ad_refreshToken","")
+              location.href ="http://127.0.0.1:5501/v_admin/dangnhap.html"
+          }
+        },1000)
+      </script>
 </body>
 </html>
