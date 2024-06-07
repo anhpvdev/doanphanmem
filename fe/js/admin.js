@@ -40,12 +40,14 @@ if(ad_token){
                 menu_bar.innerHTML = `<div class="item">Tổng quan</div>
 
                 <div class="item"><a href="./quanlytaikhoan_us.html">Tài khoản user</a></div>
+                <div class="item"><a href="./xulyyeucau.html">Yêu cầu hỗ trợ</a></div>
                 <div class="item"><a href="#" id="a_logout">Đăng Xuất</a></div>`
             }else if( data.vaiTro=="Master"){
                 menu_bar.innerHTML = `<div class="item">Tổng quan</div>
                   <div class="item"><a href="./quanlykhaibaotamtru.html">Quản lý khai báo tạm trú</a></div>
                 <div class="item"><a href="./quanlytaikhoan_us.html">Tài khoản user</a></div>
                 <div class="item"><a href="./quanlytaikhoan_ad.html">Tài khoản admin</a></div>
+                <div class="item"><a href="./xulyyeucau.html">Yêu cầu hỗ trợ</a></div>
                 <div class="item"><a href="#" id="a_logout">Đăng Xuất</a></div>`
             }else{
                 location.href="http://127.0.0.1:5501/v_admin/dangnhap.html"

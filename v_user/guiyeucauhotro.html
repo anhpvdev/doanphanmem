@@ -45,7 +45,7 @@
             <div class="item seach">
                <input type="text">
             </div>
-            <div class="item user">
+            <div class="item user"  id="user_show">
                 <a href="">ĐĂNG NHẬP</a>
             </div>
         </div>
@@ -62,34 +62,78 @@
         <div class="router grid wide">
             <a href="">YÊU CẦU HỖ TRỢ</a>
         </div>
-        <form class="container registry login">
+        <div class="container registry login">
             <h3>THÔNG TIN YÊU CẦU</h3>
             <div class="boxwide">
                 <div class="box">
                     <div class="col">
                         <div class="item">
                             <p>Báo lỗi:</p>
-                            <input type="text">
+                            <input type="text" id="err_content">
                         </div>
-                        <div class="item">
+                        <!-- <div class="item">
                             <p>Khác:</p>
                             <input type="text">
-                        </div>
+                        </div> -->
                         <label style="margin: 30px 0px 10px 0px;">Tải tệp đính kèm yêu cầu (nếu có)</label>
-                        <input class="suport-hoso" type="file" title="tải hồ sơ cá nhân">
+                        <input class="suport-hoso" type="file" title="tải hồ sơ cá nhân" id="err_file">
                     </div>
                 </div>
 
 
                 <div class="regis">
-                    <button>Gửi</button>
+                    <button type="button" id="err_send">Gửi</button>
                 </div>
 
             </div>
-        </form>
+        </div>
     </div>
 
+    <script>
+        const err_content = document.getElementById("err_content")
+        const err_file = document.getElementById("err_file")
+        const err_send = document.getElementById("err_send")
 
+
+        err_send.onclick = function(){
+            if(err_content.value){
+                
+                var formData = new FormData()
+
+                formData.append("file", err_file.files[0]);
+                let requestData = {
+                    "loaiYeuCau":"Hỗ trợ",
+                    "noiDungYeuCau":err_content.value
+                };
+                console.log(requestData)
+                formData.append("request", new Blob([JSON.stringify(requestData)], { type: "application/json" }));
+
+                $.ajax({
+                    "url": "http://localhost:8080/api/user/support",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                            "Authorization": "Bearer "+token
+                        },
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": formData,
+                    success: function(data) {
+                        console.log(data)
+                        alert(data||"thêm thành công")
+                       
+                    },error:function(message){
+                        console.log(message)
+                        alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                    }
+                })
+            }else{
+                alert("vui lòng nhập nội dung")
+            }
+        }
+    </script>
 
 
 

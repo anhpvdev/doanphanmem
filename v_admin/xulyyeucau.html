@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fe/css/grid.css">
+    <link rel="stylesheet" href="../fe/css/header-footer.css">
+    <link rel="stylesheet" href="../fe/css/update.css">
+    <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
+    <script src="../fe/js/jquery.js"></script>
+    <style>
+        .box-checked{
+            width: 230px;
+            margin: 20px 35px;
+        }
+        .checked-tamtru{
+            display: flex;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .checked-tamtru input{
+            width:30px;
+            height: 30px;
+        }
+        .checked-tamtru label{
+            place-content: center;
+            padding-left: 20px;
+        }
+
+        .sumit_tamtru:hover{
+            background-color: #80f780;
+        }
+
+        .item button{
+            height: 30px;
+            margin: 10px;
+            width: 240px;
+            border-radius: 5px;
+            background-color: #ffb4b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header grid">
+        <div class="container gridhead wide">
+            <div class="item">
+                <div class="logo">
+                    <a href=""><img src="./image/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">TRANG CHỦ</a>
+            </div>
+            <div class="item">
+                <a href="">GIỚI THIỆU</a>
+            </div>
+            <div class="item">
+                <a href="">THỦ TỤC</a>
+            </div>
+            <div class="item">
+                <a href="">QUY ĐỊNH</a>
+            </div>
+            <div class="item">
+                <a href="">HỖ TRỢ</a>
+            </div>
+            <div class="item">
+                <a href="">THÔNG TIN</a>
+            </div>
+            <div class="item">
+                <a href="">TIN TỨC</a>
+            </div>
+            <div class="item">
+                <a href="">LIÊN HỆ</a>
+            </div>
+            <div class="item seach">
+               <input type="text">
+            </div>
+            <div class="item user" id="user_show">
+                <a href="">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="nav">
+        <div class="menu" id="menu_bar">
+            <!-- <div class="item">Tổng quan</div>
+            <div class="item">Quản lý tài khoản</div>
+            <div class="item">Xử lý yêu cầu</div>
+            <div class="item"> văn bản hướng dẫn</div>
+            <div class="item">Quản lý vi phạm</div>
+            <div class="item">Quản lý khai báo</div> -->
+        </div>
+
+        
+        <div class="main grid">
+            <div class="router grid wide">
+                <a href="">XỬ LÝ YÊU CẦU</a>
+            </div>
+            <div class="container grid wide updateuser">
+                <div class="box boxwide">
+                    <div class="item">
+                        <b>Loại yêu cầu:</b>
+                    <input type="text" id="loaiYeuCau"> 
+                    </div>
+                    <div class="item">
+                        <b>Người gửi:</b>
+                    <input type="text" id="hoVaTen"> 
+                    </div>
+                    <div class="item">
+                        <b>Tài khoảng gửi</b>
+                    <input type="text" id="email"> 
+                    </div>
+                    <div class="item">
+                        <b>Trạng thái:</b>
+                    <input type="text" id="trangThai"> 
+                    </div>
+                    <div class="item">
+                        <b>Nội dung yêu cầu:</b>
+                    <input type="text" id="noiDungYeuCau"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày gửi:</b>
+                    <input type="text" id="ngayTao"> 
+                    </div>
+                    <div class="item">
+                        <b>Ngày xử lý:</b>
+                        <input type="text" id="ngayXuLy"> 
+                    </div>
+                   
+                    <div class="item">
+                        <p>Tệp đính kèm:</p>
+                        <input type="hidden" id="k_file">
+                        <input type="hidden" id="k_idsuport">
+                        <button id="show__file" onclick="showfile()">Nhấp xem hoặc tải về</button>
+                    </div>
+                    
+                </div>
+
+                <div class="resend">
+                    <div class="item" style="margin-right: 20px;">
+                        <b>Nội dung phản hồi</b>
+                        <input type="text" id="noiDungPhanHoi"> 
+                    </div>
+                   <div>
+                        <p><b>Tệp phản hồi</b></p>
+                        <input type="file" name="" id="tepPhanHoi">
+                    </div>
+                  
+                </div>
+
+                <div class="action">
+                    <button id="send_suport">Gửi</button>
+                    <!-- <button>Cập nhật</button>
+                    <button>Xóa</button> -->
+                </div>
+                <div class="listuser" id="list_request">
+                    <div class="render">
+                        <h4>Danh sách người nước ngoài tạm trú</h4>
+                        <button onclick="k_loc()">lọc</button>
+                    </div>
+                    <div class="head table row" >
+                        <div class="stt col c-1">STT</div>
+                        <div class="col c-1">Loại yêu cầu</div>
+
+                        <div class="col c-4">Nội dung</div>
+                        <div class="col c-2">Người gửi</div>
+                        <div class="col c-1">Ngày gửi</div>
+                        <div class="col c-2">Trạng thái</div>
+
+                    </div>
+                    <!-- <div class="roww table row">
+                        <div class="stt col c-1">1</div>
+                        <div class="col c-2">1231ádasdas23</div>
+                        <div class="col c-4">123123</div>
+                        <div class="col c-2">123123</div>
+                        <div class="col c-1">1231</div>
+                        <div class="col c-1">2131ádasasdasdasdasdádasdsaasd23</div>
+
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="footer grid">
+        <div class="container gridfoot" >
+            <div class="logo">
+                <img src="./image/logo.png" alt="">
+            </div>
+            <div class="info">
+                <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
+                <p><b>Giấy phép:</b> 612/GP-STTTT cấp ngày 21 tháng 10 năm 2016.</p>
+                <p><b>Trưởng Ban biên tập:</b> Trần Chí Cường, Phó Chủ tịch UBND thành phố.</p>
+                <p><b>Trụ sở:</b> 24 Trần Phú, P.Thạch Thang, Q. Hải Châu, TP. Đà Nẵng.</p>
+                <p><b>Điện thoại:</b> (+84.236) 3.817.366 </p>
+                <p><b>Email:</b> toasoan@danang.gov.vn</p>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../fe/js/admin.js"></script>
+    <!-- <script src="../fe/js/user.js"></script> -->
+    <script>
+        var data_request = []
+        const list_request = document.getElementById("list_request")
+         async function getvalue(){
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/support-request/all",
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {
+                    console.log(data)
+                    data_request = data.content
+                   for(i=0;i<data_request.length;i++){
+                    list_request.innerHTML +=` <div class="roww table row" onclick="bindvalue('${data_request[i].id}')">
+                        <div class="stt col c-1">${i+1}</div>
+                        <div class="col c-1">${data_request[i].loaiYeuCau}</div>
+                        <div class="col c-4">${data_request[i].noiDungYeuCau}</div>
+                        <div class="col c-2">${data_request[i].hoVaTen}</div>
+                        <div class="col c-1">${data_request[i].ngayTao.slice(0,10)}</div>
+                        <div class="col c-2">${data_request[i].trangThai}</div>
+
+                    </div>`
+
+                  
+                   }
+                
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                }
+            })
+            })
+        }
+
+        getvalue()
+
+        function k_loc(){
+            list_request.innerHTML =`<div class="render">
+                        <h4>Danh sách báo lỗi chưa xét duyệt</h4>
+                        <button onclick="k_loc()">lọc</button>
+                    </div>
+                    <div class="head table row" >
+                        <div class="stt col c-1">STT</div>
+                        <div class="col c-1">Loại yêu cầu</div>
+
+                        <div class="col c-4">Nội dung</div>
+                        <div class="col c-2">Người gửi</div>
+                        <div class="col c-1">Ngày gửi</div>
+                        <div class="col c-2">Trạng thái</div>
+
+                    </div>`
+            for(i=0;i<data_request.length;i++){
+                    if(data_request[i].trangThai !="Đã giải quyết"){
+                        list_request.innerHTML +=` <div class="roww table row" onclick="bindvalue('${data_request[i].id}')">
+                        <div class="stt col c-1">${i+1}</div>
+                        <div class="col c-1">${data_request[i].loaiYeuCau}</div>
+                        <div class="col c-4">${data_request[i].noiDungYeuCau}</div>
+                        <div class="col c-2">${data_request[i].hoVaTen}</div>
+                        <div class="col c-1">${data_request[i].ngayTao.slice(0,10)}</div>
+                        <div class="col c-2">${data_request[i].trangThai}</div>
+
+                    </div>`
+                    }
+
+                   }
+        }
+
+        const email = document.getElementById("email")
+        const hoVaTen = document.getElementById("hoVaTen")
+        const id = document.getElementById("id")
+        const idNguoiDung = document.getElementById("idNguoiDung")
+        const loaiYeuCau = document.getElementById("loaiYeuCau")
+        const ngayTao = document.getElementById("ngayTao")
+        const ngayXuLy = document.getElementById("ngayXuLy")
+        const noiDungYeuCau = document.getElementById("noiDungYeuCau")
+        const tepDinhKem = document.getElementById("tepDinhKem")
+        const trangThai = document.getElementById("trangThai")
+
+        const noiDungPhanHoi = document.getElementById("noiDungPhanHoi")
+        const k_idsuport = document.getElementById("k_idsuport")
+        const k_file = document.getElementById("k_file")
+
+        function bindvalue(index){
+            if(data_request.length >0){
+                for(i=0;i<data_request.length;i++){
+                    if(data_request[i].id==index){
+                        console.log(data_request[i])
+                        email.value = data_request[i].email
+                        hoVaTen.value = data_request[i].hoVaTen
+                        k_idsuport.value = data_request[i].id
+                        // idNguoiDung.value = data_request[i].
+                        loaiYeuCau.value = data_request[i].loaiYeuCau
+                        ngayTao.value = data_request[i].ngayTao.slice(0,10)
+                        ngayXuLy.value = data_request[i].ngayXuLy?.slice(0,10) || null
+                        noiDungPhanHoi.value = data_request[i].noiDungPhanHoi
+                        noiDungYeuCau.value = data_request[i].noiDungYeuCau
+                        k_file.value = data_request[i].tepDinhKem
+                        // tepPhanHoi.value = data_request[i].tepPhanHoi
+                        trangThai.value = data_request[i].trangThai
+                    }
+
+                   }
+            }
+             
+        }
+
+        function showfile(){
+            console.log("huhuhuuu")
+            console.log(k_file.value)
+            if(k_file.value){
+                $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/support-request/"+k_idsuport.value+"/file/"+k_file.value,
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {          
+                    console.log(data)
+                    window.open(data)
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                
+                }
+            })
+            }else{
+                alert("không có tệp đính kèm")
+            }
+        }
+
+        const send_suport = document.getElementById('send_suport')
+        send_suport.onclick = function(){
+           if(!k_idsuport.value){
+            alert("vui lòng chọn yêu cầu")
+           }else if(!noiDungPhanHoi.value){
+            alert("vui lòng nhập nội dung phản hồi")
+           }else{
+                // alert(k_idsuport.value)
+                var formData = new FormData()
+                var tepPhanHoi = document.getElementById("tepPhanHoi")
+                formData.append("file", tepPhanHoi.files[0]);
+                let requestData = {
+                    "id":k_idsuport.value,
+                    "noiDungPhanHoi":noiDungPhanHoi.value
+                };
+                console.log(requestData)
+                formData.append("request", new Blob([JSON.stringify(requestData)], { type: "application/json" }));
+
+                $.ajax({
+                    "url": "http://localhost:8080/api/support-request/resolution",
+                    "method": "PUT",
+                    "timeout": 0,
+                    "headers": {
+                            "Authorization": "Bearer "+ad_token
+                        },
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": formData,
+                    success: function(data) {
+                        console.log(data)
+                        alert(data||"thêm thành công")
+                        location.reload()
+                       
+                    },error:function(message){
+                        console.log(message)
+                        alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    }
+                })
+           }
+        }
+    </script>
+
+    <script>
+      
+        setTimeout(function(){
+          const a_logout = document.getElementById("a_logout")
+          a_logout.onclick = function(){
+              alert("logout")
+              localStorage.setItem("ad_accessToken","")
+              localStorage.setItem("ad_email","")
+              localStorage.setItem("ad_id","")
+              localStorage.setItem("ad_refreshToken","")
+              location.href ="http://127.0.0.1:5501/v_admin/dangnhap.html"
+          }
+        },1000)
+      </script>
+</body>
+</html>
