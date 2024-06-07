@@ -129,7 +129,7 @@
                 <div class="listuser" id="list_user">
                     <div class="render">
                         <h4>Danh sách tài khoản</h4>
-                        <button>In danh sách</button>
+                        <button><a href="./addadmin.html" style="text-decoration: none; color: blue;">Thêm admin</a></button>
                     </div>
                     <div class="head table">
                         <div class="stt">STT</div>
@@ -203,7 +203,7 @@
                     console.log(data)
                     let listur = data.content
                     for(let i=0;i<listur.length;i++){
-                        if(listur[i].vaiTro !="ChuCS"){
+                        if(listur[i].vaiTro !="ChuCS" && listur[i].vaiTro !="Master"){
                         show_user.innerHTML += ` <div class="roww table" onclick="bindvalue('${listur[i].id}')">
                         <div class="stt">${i+1}</div>
                         <div class="data">${listur[i].vaiTro}</div>
