@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fe/css/grid.css">
+    <link rel="stylesheet" href="../fe/css/header-footer.css">
+    <link rel="stylesheet" href="../fe/css/registry.css">
+    <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
+    <link rel="stylesheet" href="../fe/css/vanban.css">
+    <script src="../fe/js/jquery.js"></script>
+    <style>
+        .box-checked{
+            width: 230px;
+            margin: 20px 35px;
+        }
+        .checked-tamtru{
+            display: flex;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .checked-tamtru input{
+            width:30px;
+            height: 30px;
+        }
+        .checked-tamtru label{
+            place-content: center;
+            padding-left: 20px;
+        }
+
+        .sumit_tamtru:hover{
+            background-color: #80f780;
+        }
+
+        .item button{
+            height: 30px;
+            margin: 10px;
+            width: 240px;
+            border-radius: 5px;
+            background-color: #ffb4b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header grid">
+        <div class="container gridhead wide">
+            <div class="item">
+                <div class="logo">
+                    <a href=""><img src="../fe/image/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">TRANG CHỦ</a>
+            </div>
+            <div class="item">
+                <a href="">GIỚI THIỆU</a>
+            </div>
+            <div class="item">
+                <a href="">THỦ TỤC</a>
+            </div>
+            <div class="item">
+                <a href="">QUY ĐỊNH</a>
+            </div>
+            <div class="item">
+                <a href="">HỖ TRỢ</a>
+            </div>
+            <div class="item">
+                <a href="">THÔNG TIN</a>
+            </div>
+            <div class="item">
+                <a href="">TIN TỨC</a>
+            </div>
+            <div class="item">
+                <a href="">LIÊN HỆ</a>
+            </div>
+            <div class="item seach">
+               <input type="text">
+            </div>
+            <div class="item user" id="user_show">
+                <a href="">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="nav">
+        <div class="menu" id="menu_bar">
+            <!-- <div class="item">Tổng quan</div>
+            <div class="item">Quản lý tài khoản</div>
+            <div class="item">Xử lý yêu cầu</div>
+            <div class="item"> văn bản hướng dẫn</div>
+            <div class="item">Quản lý vi phạm</div>
+            <div class="item">Quản lý khai báo</div> -->
+        </div>
+
+        
+        <div class="container registry">
+            <div class="boxwide">
+                <div class="box">
+                    <div class="col">
+                        <div class="item">
+                            <p>id</p>
+                            <input type="text" id="vb_id">
+                        </div>
+                        <div class="item">
+                            <p>Số ký hiệu</p>
+                            <input type="text" id="vb_kh">
+                        </div>
+                        <div class="item">
+                            <p>Cơ quan ban hành:</p>
+                            <input type="text" id="vb_cq">
+                        </div>
+                      
+                        <div class="item">
+                            <p>Ngày ban hành:</p>
+                            <input type="date" id="vb_date" data-date-format="YYYY-MM-DD">
+                        </div>
+                        <div class="item">
+                            <p>Trích yếu</p>
+                            <input type="text" id="vb_ty">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="item">
+                            <p>Ngày có hiệu lực:</p>
+                            <input type="date" id="vb_date2" data-date-format="YYYY-MM-DD">
+                        </div>
+                        <div class="item">
+                            <p>Người ký:</p>
+                            <input type="text" id="vb_nk">
+                        </div>
+                        <div class="item">
+                            <p>Cấp ban hành:</p>
+                            <input type="text" id="vb_cbh">
+                        </div>
+                        <div class="item">
+                            <p>Tệp đính kèm:</p>
+                            <input type="hidden" id="vb_file">
+                            <input type="hidden" id="vb_id">
+                            <button id="show__file" onclick="showfile()">Nhấp xem hoặc tải về</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Nội dung</h3>
+                    <textarea name="content" id="vb_content" cols="100" rows="15" ></textarea>
+                </div>
+                
+                <div class="regis">
+                  
+                    <button id="vb_update">Cập nhật</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="footer grid">
+        <div class="container gridfoot" >
+            <div class="logo">
+                <img src="../fe/image/logo.png" alt="">
+            </div>
+            <div class="info">
+                <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
+                <p><b>Giấy phép:</b> 612/GP-STTTT cấp ngày 21 tháng 10 năm 2016.</p>
+                <p><b>Trưởng Ban biên tập:</b> Trần Chí Cường, Phó Chủ tịch UBND thành phố.</p>
+                <p><b>Trụ sở:</b> 24 Trần Phú, P.Thạch Thang, Q. Hải Châu, TP. Đà Nẵng.</p>
+                <p><b>Điện thoại:</b> (+84.236) 3.817.366 </p>
+                <p><b>Email:</b> toasoan@danang.gov.vn</p>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../fe/js/admin.js"></script>
+    <script>
+        var id_vanban = location.href.split("?")[1]
+
+        const vb_kh = document.getElementById("vb_kh")
+        const vb_cq = document.getElementById("vb_cq")
+        const vb_id = document.getElementById("vb_id")
+        const vb_date = document.getElementById("vb_date")
+        const vb_ty = document.getElementById("vb_ty")
+        const vb_date2 = document.getElementById("vb_date2")
+        const vb_nk = document.getElementById("vb_nk")
+        const vb_cbh = document.getElementById("vb_cbh")
+        const vb_file = document.getElementById("vb_file")
+        const vb_content = document.getElementById("vb_content")
+
+        var info_vb = {}
+
+        $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/legal-document/details/"+id_vanban,
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {
+                    info_vb = data
+                    info_vb.idDanhMucBaiViet = "8193c991-331b-4e7d-91d6-3efa618ad051"
+                    console.log(info_vb)
+                    vb_kh.value = info_vb.soKyHieu
+                    vb_cq.value = info_vb.coQuanBanHanh
+                    vb_ty.value = info_vb.trichYeu
+                    vb_date.value = info_vb.ngayBanHanh
+                    vb_date2.value = info_vb.ngayCoHieuLuc
+                    vb_nk.value = info_vb.nguoiKy
+                    vb_content.value = info_vb.noiDungVanBan
+                    vb_cbh.value = info_vb.capBanHanh
+                    vb_id.value = info_vb.id
+                    vb_file.value = info_vb.tepDinhKem
+     
+                
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                }
+            })
+
+
+            function showfile(){
+            console.log("huhuhuuu")
+            console.log(vb_file.value)
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/legal-document/"+vb_id.value+"/file/"+vb_file.value,
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {          
+                    console.log(data)
+                    window.open(data)
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                
+                }
+            })
+        }
+
+        const vb_update = document.getElementById("vb_update")
+        vb_update.onclick = function(){
+            var formData = new FormData()
+            let requestData = {
+                "soKyHieu":vb_kh.value,
+                "coQuanBanHanh":vb_cq.value,
+                "trichYeu":vb_ty.value,
+                "ngayBanHanh":vb_date.value,
+                "ngayCoHieuLuc":vb_date2.value,
+                "nguoiKy":vb_nk.value,
+                "noiDungVanBan":vb_content.value,
+                "capBanHanh":vb_cbh.value,
+                "idDanhMucBaiViet": "8193c991-331b-4e7d-91d6-3efa618ad051"
+            };
+
+            console.log(requestData)
+            formData.append("request", new Blob([JSON.stringify(requestData)], { type: "application/json" }));
+
+            let result = confirm( `Cập nhật văn bản?` );
+
+            if ( result ) {
+                $.ajax({
+                    "url": "http://localhost:8080/api/legal-document/"+vb_id.value,
+                    "method": "PUT",
+                    "timeout": 0,
+                    "headers": {
+                            "Authorization": "Bearer "+ad_token
+                        },
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": formData,
+                    success: function(data) {
+                        console.log(data)
+                        alert("Cập nhật thành công")
+                        location.href = "http://127.0.0.1:5501/v_admin/danhsachvanban.html"
+                    },error:function(message){
+                        console.log(message)
+                        alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                    }
+                })
+            }
+        }
+    </script>
+
+
+    <script>
+      
+        setTimeout(function(){
+          const a_logout = document.getElementById("a_logout")
+          a_logout.onclick = function(){
+              alert("logout")
+              localStorage.setItem("ad_accessToken","")
+              localStorage.setItem("ad_email","")
+              localStorage.setItem("ad_id","")
+              localStorage.setItem("ad_refreshToken","")
+              location.href ="http://127.0.0.1:5501/v_admin/dangnhap.html"
+          }
+        },1000)
+      </script>
+
+</body>
+</html>

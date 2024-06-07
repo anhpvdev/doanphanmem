@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../fe/css/grid.css">
+    <link rel="stylesheet" href="../fe/css/header-footer.css">
+    <link rel="stylesheet" href="../fe/css/registry.css">
+    <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
+    <link rel="stylesheet" href="../fe/css/vanban.css">
+    <link rel="stylesheet" href="../fe/css/update.css">
+    <script src="../fe/js/jquery.js"></script>
+    <style>
+        .box-checked{
+            width: 230px;
+            margin: 20px 35px;
+        }
+        .checked-tamtru{
+            display: flex;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .checked-tamtru input{
+            width:30px;
+            height: 30px;
+        }
+        .checked-tamtru label{
+            place-content: center;
+            padding-left: 20px;
+        }
+
+        .sumit_tamtru:hover{
+            background-color: #80f780;
+        }
+
+        .item button{
+            height: 30px;
+            margin: 10px;
+            width: 240px;
+            border-radius: 5px;
+            background-color: #ffb4b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header grid">
+        <div class="container gridhead wide">
+            <div class="item">
+                <div class="logo">
+                    <a href=""><img src="../fe/image/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="">TRANG CHỦ</a>
+            </div>
+            <div class="item">
+                <a href="">GIỚI THIỆU</a>
+            </div>
+            <div class="item">
+                <a href="">THỦ TỤC</a>
+            </div>
+            <div class="item">
+                <a href="">QUY ĐỊNH</a>
+            </div>
+            <div class="item">
+                <a href="">HỖ TRỢ</a>
+            </div>
+            <div class="item">
+                <a href="">THÔNG TIN</a>
+            </div>
+            <div class="item">
+                <a href="">TIN TỨC</a>
+            </div>
+            <div class="item">
+                <a href="">LIÊN HỆ</a>
+            </div>
+            <div class="item seach">
+               <input type="text">
+            </div>
+            <div class="item user" id="user_show">
+                <a href="">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="nav">
+        <div class="menu" id="menu_bar">
+            <!-- <div class="item">Tổng quan</div>
+            <div class="item">Quản lý tài khoản</div>
+            <div class="item">Xử lý yêu cầu</div>
+            <div class="item"> văn bản hướng dẫn</div>
+            <div class="item">Quản lý vi phạm</div>
+            <div class="item">Quản lý khai báo</div> -->
+        </div>
+
+        
+        <div class="main grid">
+            <div class="router grid wide">
+                <a href="">DANH SÁCH VĂN BẢN QUY ĐỊNH, HƯỚNG DẪN</a>
+            </div>
+            <form class="container grid wide updateuser">
+                <div class="action" style="place-content: flex-start;">
+                 
+                    <button><a href="./themvanban.html" style="text-decoration: none; color: white;">Thêm văn bản</a></button>
+                </div>
+            
+               
+                <div class="listuser" id="list_vb">
+                    <div class="render">
+                        <h4></h4>
+                        <button>In danh sách</button>
+                    </div>
+                    <div class="head table">
+                        <div class="stt">STT</div>
+
+                        <div class="data">Số ký hiệu</div>
+                        <div class="data">Cơ quan hành chính</div>
+                        <div class="data">Loại văn bản</div>
+                        <div class="data">Trích yếu</div>
+                        <div class="data">Ngày ban hành</div>
+                        <div class="data"></div>
+                    </div>
+                    <!-- <div class="roww table">
+                        <div class="stt">1</div>
+                        <div class="data">123123</div>
+                        <div class="data">123123</div>
+                        <div class="data">1231ádasdass asdasd adasdádasdasasasd23</div>
+                        <div class="data">2131ádasasdasdádasdsaasd23</div>
+                        <div class="data">123123</div>
+                        <div class="data" id="data-edit">
+                            <div><a href="./capnhatvanban.html?${}"><img src="../fe/image/edit.png" alt=""></a></div>
+                            <div><img src="../fe//image/delete.png" alt=""></div>
+                        </div>
+                        
+                    </div> -->
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="footer grid">
+        <div class="container gridfoot" >
+            <div class="logo">
+                <img src="../fe/image/logo.png" alt="">
+            </div>
+            <div class="info">
+                <h3>BẢN QUYỀN CỦA ỦY BAN NHÂN DÂN THÀNH PHỐ ĐÀ NẴNG</h3>
+                <p><b>Giấy phép:</b> 612/GP-STTTT cấp ngày 21 tháng 10 năm 2016.</p>
+                <p><b>Trưởng Ban biên tập:</b> Trần Chí Cường, Phó Chủ tịch UBND thành phố.</p>
+                <p><b>Trụ sở:</b> 24 Trần Phú, P.Thạch Thang, Q. Hải Châu, TP. Đà Nẵng.</p>
+                <p><b>Điện thoại:</b> (+84.236) 3.817.366 </p>
+                <p><b>Email:</b> toasoan@danang.gov.vn</p>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../fe/js/admin.js"></script>
+    <!-- <script src="../fe/js/user.js"></script> -->
+    <script>
+        const list_vb = document.getElementById("list_vb")
+       async function getvalue(){
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/legal-document/all",
+                headers:{"Authorization": 'Bearer '+ad_token },
+                
+                success: function(data) {
+                    console.log(data)
+                    var data_request = data.content
+                   for(i=0;i<data_request.length;i++){
+                    list_vb.innerHTML +=` <div class="roww table">
+                        <div class="stt">${i}</div>
+                        <div class="data">${data_request[i].soKyHieu}</div>
+                        <div class="data">${data_request[i].coQuanBanHanh}</div>
+                        <div class="data">${data_request[i].capBanHanh}</div>
+                        <div class="data">${data_request[i].trichYeu}</div>
+                        <div class="data">${data_request[i].ngayBanHanh}</div>
+                        <div class="data" id="data-edit">
+                           <div><a href="./capnhatvanban.html?${data_request[i].id}"><img src="../fe/image/edit.png" alt=""></a></div>
+                            <div><img src="../fe//image/delete.png" alt="" onclick="delete_vb('${data_request[i].id}')"></div>
+                        </div>
+                        
+                    </div>`
+
+                  
+                   }
+                
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    
+                }
+            })
+            })
+        }
+
+        getvalue()
+
+
+        function delete_vb(index){
+            let result = confirm( `Bạn xóa văn bản?` );
+
+            if ( result ) {
+                // alert(index)
+                $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/api/legal-document/"+index,
+                        headers:{"Authorization": 'Bearer '+ad_token },
+                        success: function(data) {
+                            console.log(data)
+                            alert("Xóa thành công")
+                            window.location.reload()
+
+                        },error:function(message){
+                            console.log(message)
+                            alert("có lỗi sảy ra")
+                            // window.location.href = "./dangnhap.html"
+                        }
+                    })
+            }
+        }
+    </script>
+
+    <script>
+      
+        setTimeout(function(){
+          const a_logout = document.getElementById("a_logout")
+          a_logout.onclick = function(){
+              alert("logout")
+              localStorage.setItem("ad_accessToken","")
+              localStorage.setItem("ad_email","")
+              localStorage.setItem("ad_id","")
+              localStorage.setItem("ad_refreshToken","")
+              location.href ="http://127.0.0.1:5501/v_admin/dangnhap.html"
+          }
+        },1000)
+      </script>
+
+</body>
+</html>
