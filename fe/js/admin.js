@@ -50,6 +50,7 @@ if(ad_token){
                 <div class="item"><a href="./quanlytaikhoan_ad.html">Tài khoản admin</a></div>
                 <div class="item"><a href="./xulyyeucau.html">Yêu cầu hỗ trợ</a></div>
                  <div class="item"><a href="./danhsachvanban.html">Thêm văn bản</a></div>
+                 <div class="item"><a href="./quanlyvipham.html">Quản lý vi phạm</a></div>
                 <div class="item"><a href="#" id="a_logout">Đăng Xuất</a></div>`
             }else{
                 location.href="http://127.0.0.1:5501/v_admin/dangnhap.html"

@@ -215,25 +215,6 @@
                 };
                 console.log(requestData)
                 formData.append("request", new Blob([JSON.stringify(requestData)], { type: "application/json" }));
-                
-                // var settings = {
-                //     "url": "http://localhost:8080/api/foreigner/"+list_cslt.value,
-                //     "method": "POST",
-                //     "timeout": 0,
-                //     "headers": {
-                //         "Authorization": "Bearer "+token
-                //     },
-                //     "processData": false,
-                //     "mimeType": "multipart/form-data",
-                //     "contentType": false,
-                //     "data": formData
-                // };
-
-                // $.ajax(settings).done(function (response) {
-                //     console.log(response);
-                //     alert("Thêm thành công")
-                //     window.location.reload()
-                // });
 
                 $.ajax({
                     "url": "http://localhost:8080/api/foreigner/"+list_cslt.value,

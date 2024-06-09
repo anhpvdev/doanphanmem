@@ -102,6 +102,49 @@
     </div>
     <script src="../fe/js/user.js"></script>
     <script>
+        function bindvalue(){
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/api/accommodation/all",
+                headers:{"Authorization": 'Bearer '+token },
+                
+                success:async function(data) {
+                    let listcs = data.content
+                    for(i=0;i<listcs.length;i++){
+                        await getvipham(listcs[i].id)
+                    }
+                   
+
+                },error:function(message){
+                    console.log(message)
+                    alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                    window.location.href = "./dangnhap.html"
+                }
+            })
+        }
+        bindvalue()
+
+
+        async function getvipham(index){
+            return new Promise((resolve) => {
+                $.ajax({
+                    type: "get",
+                    url: "http://localhost:8080/api/notification/"+"be56ba70-b67e-418e-b0b4-bc0ff8e6f6f3"+"/all",
+                    headers:{"Authorization": 'Bearer '+token },
+                    
+                    success:async function(data) {
+                        console.log(data)
+                        resolve()
+                    },error:function(message){
+                        console.log(message)
+                        alert(message?.responseJSON?.message||"có lỗi sảy ra")
+                        window.location.href = "./dangnhap.html"
+                    }
+                })
+            })
+        }
+    </script>
+    <script>
         const logout = document.getElementById("logout")
         logout.onclick = function(){
             localStorage.setItem("accessToken","")
