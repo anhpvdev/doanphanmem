@@ -11,6 +11,26 @@
     <link rel="stylesheet" href="../fe/css/quanlytaikhoan.css">
     <link rel="stylesheet" href="../fe/css/menu.css">
     <script src="../fe/js/jquery.js"></script>
+    <style>
+        .updateuser{
+            margin-top: 100px;
+        }
+        .item_tb{
+            margin:30px 0px 0px 30px;
+        }
+
+        .item_tb a{
+           font-size: 25px;
+           color: red;
+     
+        }
+
+        .item_tb a:hover{
+     
+           color: rgb(255, 141, 141);
+     
+        }
+    </style>
 </head>
 <body>
     <div class="header grid">
@@ -76,7 +96,11 @@
 
         
         <div class="main grid">
-           
+            <div class="container grid wide updateuser"  id="list_tb">
+                <!-- <div class="item_tb" >
+                        <a href="">vi phạm</a>
+                </div> -->
+            </div>
         </div>
     </div>
 
@@ -114,7 +138,6 @@
                         await getvipham(listcs[i].id)
                     }
                    
-
                 },error:function(message){
                     console.log(message)
                     alert(message?.responseJSON?.message||"có lỗi sảy ra")
@@ -125,15 +148,24 @@
         bindvalue()
 
 
+        var list_tb = document.getElementById("list_tb")
+
         async function getvipham(index){
             return new Promise((resolve) => {
                 $.ajax({
                     type: "get",
-                    url: "http://localhost:8080/api/notification/"+"be56ba70-b67e-418e-b0b4-bc0ff8e6f6f3"+"/all",
+                    url: "http://localhost:8080/api/notification/"+index+"/all",
                     headers:{"Authorization": 'Bearer '+token },
                     
                     success:async function(data) {
-                        console.log(data)
+                       let list_data = data.content
+                       for(let i=0;i<list_data.length;i++){
+                        console.log(list_data[i])
+                        list_tb.innerHTML +=`<div class="item_tb" >
+                                            <a href="./vipham.html?${list_data[i].id}">${list_data[i].tieuDe}</a>
+                                    </div>`
+                       }
+                       
                         resolve()
                     },error:function(message){
                         console.log(message)
