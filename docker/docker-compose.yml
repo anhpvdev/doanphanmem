@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  foreigner-management:
+    image: tumuaxuan/foreigner-management:s1
+    container_name: foreigner-management
+    ports:
+      - "8080:8080"
+    networks:
+      - foreigner-management-network
+    restart: on-failure
+
+  foreigner-management-db:
+    image: postgres
+    container_name: foreigner-management-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: quanlynguoinuocngoai
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: phamtantudn3
+    networks:
+      - foreigner-management-network
+    volumes:
+      - my_postgres_data:/var/lib/postgresql/data
+
+networks:
+  foreigner-management-network:
+    driver: bridge
+
+volumes:
+  my_postgres_data:
